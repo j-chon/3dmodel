@@ -1,0 +1,91 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.postgresql:postgresql:42.2.5")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.0.0'
+    id "com.moowork.node" version "1.2.0"
+
+}
+    group 'jp.co.ssk.3d'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'application'
+    apply plugin: 'com.github.johnrengelman.shadow'
+    apply plugin: 'com.moowork.node'
+
+    defaultTasks 'shadowJar'
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+    group = 'ssk'
+    version = '1.1.1'
+    applicationName = 'ThreeApp'
+    mainClassName = 'jp.com.sskprj.dw.three.ThreeApplication'
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        compile "io.dropwizard:dropwizard-core:1.3.12"
+        testCompile "junit:junit:4.11"
+        compile "io.dropwizard:dropwizard-testing:1.3.12"
+        compile group: 'io.dropwizard', name: 'dropwizard-views-freemarker', version: '2.0.0-rc2'
+        compile group: 'io.dropwizard', name: 'dropwizard-hibernate', version: '2.0.0-rc2'
+        compile group: 'io.dropwizard', name: 'dropwizard-migrations', version: '2.0.0-rc2'
+
+
+        compileOnly 'org.projectlombok:lombok:1.18.8'
+        annotationProcessor 'org.projectlombok:lombok:1.18.8'
+
+
+        // java9以降でJAXBExceptionがJavaEEのライブラリとして扱われる様になったため、依存関係を追加する。
+        // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+        compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+        // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core
+        compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
+        // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
+        compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
+        compile group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
+
+        // https://mvnrepository.com/artifact/org.postgresql/postgresql
+        compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+//        shadow 'org.postgresql:postgresql:42.2.5'
+
+    }
+    shadowJar {
+        version = 1.0
+
+        mergeServiceFiles()
+        exclude 'META-INF/*.SF'
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+    }
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+    jar {
+        manifest {
+            attributes(
+                    'Implementation-Title': applicationName,
+                    'Implementation-Version': 0.1,
+                    'Built-By': 'samansa',
+                    'Built-Time': new Date(),
+                    'Main-Class': applicationName,
+                    'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
+            )
+        }
+
+    }
+
+    node {
+        version = '6.11.0'
+        download = true
+    }
+

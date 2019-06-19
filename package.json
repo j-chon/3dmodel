@@ -1,0 +1,64 @@
+{
+  "name": "webAppTemplate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript と [Vue](https://vuejs.org)を同じプロジェクトで利用する為の、クイックスタートガイド。\r This guide is flexible enough that any steps here can be used to integrate TypeScript into an existing Vue project.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest",
+    "watch": "webpack --progress --watch",
+    "dev": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "Daniel Rosenwasser (https://github.com/DanielRosenwasser)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/jquery": "^3.3.28",
+    "@types/vue": "^2.0.0",
+    "bower": "^1.8.4",
+    "jquery": "^3.3.1",
+    "tsd": "^0.6.5",
+    "typescript": "^3.2.1",
+    "vue": "^2.5.17",
+    "vue-class-component": "^6.0.0",
+    "vue-property-decorator": "^7.2.0",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@vue/test-utils": "^1.0.0-beta.26",
+    "css-loader": "^0.28.11",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "ts-loader": "^2.3.7",
+    "tslint": "^5.11.0",
+    "vue-jest": "^3.0.1",
+    "vue-loader": "^12.2.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^2.7.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-chon/TypeScript-Vue-Starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/j-chon/TypeScript-Vue-Starter/issues"
+  },
+  "homepage": "https://github.com/j-chon/TypeScript-Vue-Starter#readme",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest",
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "testRegex": "(src/test/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
+  }
+}
