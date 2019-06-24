@@ -16,9 +16,10 @@ postgresql:
 dropwizard:
   image: adoptopenjdk/openjdk12:latest
   ports:
+    - "5432:5432"
     - "8080:8080"
     - "8090:8090"
   volumes:
     - ./build/libs/:/dropwizard/bin/
     - ./:/dropwizard/
-  command: ["java", "-jar", "-Done-jar.silent=true", "/dropwizard/bin//ThreeApplication-1.1.1.jar", "server", "/dropwizard/three.yml"]
+  command: ["java", "-jar", "-Done-jar.silent=true", "/dropwizard/bin/3dmodel-1.0-all.jar", "server", "/dropwizard/three.yml"]

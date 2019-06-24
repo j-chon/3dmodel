@@ -1,5 +1,5 @@
 {
-  "name": "webAppTemplate",
+  "name": "3dmodel",
   "version": "1.0.0",
   "private": true,
   "description": "TypeScript と [Vue](https://vuejs.org)を同じプロジェクトで利用する為の、クイックスタートガイド。\r This guide is flexible enough that any steps here can be used to integrate TypeScript into an existing Vue project.",
@@ -30,6 +30,7 @@
     "@vue/test-utils": "^1.0.0-beta.26",
     "css-loader": "^0.28.11",
     "jest": "^23.6.0",
+    "three": "^0.105.2",
     "ts-jest": "^23.10.5",
     "ts-loader": "^2.3.7",
     "tslint": "^5.11.0",

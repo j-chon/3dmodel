@@ -1,4 +1,4 @@
-package jp.com.sskprj.dw.three;
+package jp.com.sskprj.dw.three.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
@@ -18,7 +18,6 @@ public class ThreeConfiguration extends Configuration {
     @JsonProperty
     private String template;
 
-
     @Getter
     @Setter
     @JsonProperty
@@ -31,5 +30,10 @@ public class ThreeConfiguration extends Configuration {
     @Getter
     private DataSourceFactory datasource = new DataSourceFactory();
 
+//    public void setClassLoaderForTemplateLoading(ClassLoader classLoader, String basePackagePath) {
+//        freemarker.template.Configuration fmcg = new freemarker.template.Configuration(
+//                freemarker.template.Configuration.VERSION_2_3_0);
+//        fmcg.setClassLoaderForTemplateLoading(classLoader,basePackagePath);
+//    }
 
 }
