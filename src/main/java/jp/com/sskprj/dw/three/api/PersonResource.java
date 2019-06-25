@@ -5,6 +5,7 @@ import jp.com.sskprj.dw.three.view.CalendarDto;
 import jp.com.sskprj.dw.three.view.PersonView;
 import lombok.NoArgsConstructor;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -15,9 +16,11 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.TEXT_HTML)
 public class PersonResource {
 
-    private final PersonDAO dao;
 
-    public PersonResource(PersonDAO dao) {
+    private PersonDAO dao;
+
+    @Inject
+    public PersonResource( PersonDAO dao) {
         this.dao = dao;
     }
 
