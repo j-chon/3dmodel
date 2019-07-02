@@ -7,14 +7,22 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
     <changeSet id="1" author="amada">
-        <createTable tableName="people">
+        <createTable tableName="reserve_calendar">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="fullName" type="varchar(255)">
+            <column name="target_date" type="char(8)">
                 <constraints nullable="false"/>
             </column>
-            <column name="jobTitle" type="varchar(255)"/>
+            <column name="target_time_start" type="char(4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="target_time_start" type="char(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reservable_max_count" type="int">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

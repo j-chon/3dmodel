@@ -1,7 +1,5 @@
 package jp.com.sskprj.dw.three;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
@@ -15,17 +13,16 @@ import jp.com.sskprj.dw.three.api.PersonResource;
 import jp.com.sskprj.dw.three.api.ThreeMainResource;
 import jp.com.sskprj.dw.three.config.ThreeConfiguration;
 import jp.com.sskprj.dw.three.dao.PersonDAO;
+import jp.com.sskprj.dw.three.dao.ReserveCalendarDAO;
+import jp.com.sskprj.dw.three.entity.db.ReserveSchedule;
 import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
+import jp.com.sskprj.dw.three.pages.ReserveCalendarResource;
 import jp.com.sskprj.dw.three.view.Person;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.glassfish.jersey.spi.ExtendedExceptionMapper;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
-import java.io.File;
-import java.util.Collections;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ThreeApplication extends Application<ThreeConfiguration> {
 
@@ -33,7 +30,9 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
         new ThreeApplication().run(args);
     }
 
-    private final HibernateBundle<ThreeConfiguration> hibernate = new HibernateBundle<>(Person.class) {
+    private final HibernateBundle<ThreeConfiguration> hibernate = new HibernateBundle<>(
+            ReserveSchedule.class,Person.class
+    ) {
         @Override
         public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {
             return configuration.getDatasource();
@@ -43,16 +42,15 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     @Override
     public void run(ThreeConfiguration configuration, Environment environment) throws Exception {
 
-        File tempFile = new File("./src/main/resources/WEB-INF/");
-
         final PersonDAO personDAO = new PersonDAO(hibernate.getSessionFactory());
+        final ReserveCalendarDAO reserveCalendarDAO = new ReserveCalendarDAO(hibernate);
 
         final ThreeMainResource threeMainResource = new ThreeMainResource(configuration.getTemplate(),
                 configuration.getDefaultName());
-        final PersonResource personResource = new PersonResource(personDAO);
 
+        final ReserveCalendarResource reserveCalendarResource = new ReserveCalendarResource(reserveCalendarDAO);
         environment.jersey().register(threeMainResource);
-        environment.jersey().register(personResource);
+        environment.jersey().register(reserveCalendarResource);
 
         environment.jersey().register(new ExtendedExceptionMapper<WebApplicationException>() {
             @Override
@@ -72,6 +70,8 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
         environment.healthChecks().register("webapp/template", healthCheck);
         environment.jersey().register(threeMainResource);
 
+
+
     }
 
     @Override
@@ -81,7 +81,6 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
 
         bootstrap.addBundle(new AssetsBundle("/assets/css", "/assets/css", null, "css"));
         bootstrap.addBundle(new AssetsBundle("/assets/js", "/assets/js", null, "js"));
-
         bootstrap.addBundle(new MigrationsBundle<>() {
             @Override
             public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {
