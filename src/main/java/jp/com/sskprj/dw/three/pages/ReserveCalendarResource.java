@@ -20,6 +20,10 @@ public class ReserveCalendarResource {
         this.dao = dao;
     }
 
+    public ReserveCalendarResource() {
+
+    }
+
     @GET
     @Path("{serviceId}")
     public ReserveCalenderView getServiceCalendar(@PathParam("serviceId") String id) {

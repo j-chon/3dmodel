@@ -13,6 +13,9 @@ public class ReserveCalenderView extends AbstractOriginalView {
     public ReserveCalenderView(ReserveSchedule reserveSchedule) {
         super("reserveCalendar.ftl");
         this.reserveSchedule = reserveSchedule;
+        this.viewHeaderData = new ViewHeaderData();
+        this.viewHeaderData.setTitle("ヘッダータイトル");
+        setDummy();
     }
 
     @Getter

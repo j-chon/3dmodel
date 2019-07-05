@@ -29,27 +29,22 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     public static void main(String[] args) throws Exception {
         new ThreeApplication().run(args);
     }
-
-    private final HibernateBundle<ThreeConfiguration> hibernate = new HibernateBundle<>(
-            ReserveSchedule.class,Person.class
-    ) {
-        @Override
-        public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {
-            return configuration.getDatasource();
-        }
-    };
+//    private final HibernateBundle<ThreeConfiguration> hibernate = new HibernateBundle<>(
+//            ReserveSchedule.class,Person.class
+//    ) {
+//        @Override
+//        public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {
+//            return configuration.getDatasource();
+//        }
+//    };
 
     @Override
     public void run(ThreeConfiguration configuration, Environment environment) throws Exception {
 
-        final PersonDAO personDAO = new PersonDAO(hibernate.getSessionFactory());
-        final ReserveCalendarDAO reserveCalendarDAO = new ReserveCalendarDAO(hibernate);
+//        final ReserveCalendarDAO reserveCalendarDAO = new ReserveCalendarDAO(hibernate);
+//        final ReserveCalendarResource reserveCalendarResource = new ReserveCalendarResource(reserveCalendarDAO);
 
-        final ThreeMainResource threeMainResource = new ThreeMainResource(configuration.getTemplate(),
-                configuration.getDefaultName());
-
-        final ReserveCalendarResource reserveCalendarResource = new ReserveCalendarResource(reserveCalendarDAO);
-        environment.jersey().register(threeMainResource);
+        final ReserveCalendarResource reserveCalendarResource = new ReserveCalendarResource();
         environment.jersey().register(reserveCalendarResource);
 
         environment.jersey().register(new ExtendedExceptionMapper<WebApplicationException>() {
@@ -68,7 +63,6 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
         // ヘルスチェック機能
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("webapp/template", healthCheck);
-        environment.jersey().register(threeMainResource);
 
 
 
@@ -87,6 +81,6 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
                 return configuration.getDatasource();
             }
         });
-        bootstrap.addBundle(hibernate);
+//        bootstrap.addBundle(hibernate);
     }
 }

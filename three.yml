@@ -3,7 +3,12 @@ defaultName: Stranger
 
 server:
   rootPath: /
-
+  type: simple
+  connector:
+    type: http
+    port: 8080
+    # Server::Starterによるhot deploy
+    inheritChannel: true
 
 database:
   # the name of your JDBC driver
