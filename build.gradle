@@ -73,13 +73,25 @@ shadowJar {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+task runJar(dependsOn:jar) doLast {
+    javaexec {
+        main="-jar";
+        args = [
+                "/fitnesse-standalone.jar",
+                "-c",
+                "FrontPage?suite&format=text"
+        ]
+    }
+}
+
 jar {
     manifest {
         attributes(
                 'Implementation-Title': applicationName,
                 'Implementation-Version': 0.1,
                 'Built-By': 'samansa',
-                'Built-Time': new Date(),
+                'Built-Time': 2019/07/01,
                 'Main-Class': applicationName,
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
         )
