@@ -1,7 +1,6 @@
 package jp.com.sskprj.dw.three.pages;
 
-import jp.com.sskprj.dw.three.dao.ReserveCalendarDAO;
-import jp.com.sskprj.dw.three.view.CalendarDto;
+import jp.com.sskprj.dw.three.view.parts.CalendarDto;
 import jp.com.sskprj.dw.three.view.ReserveCalenderView;
 
 import javax.ws.rs.GET;
@@ -13,12 +12,6 @@ import javax.ws.rs.core.MediaType;
 @Path("/reserve/calendar/")
 @Produces(MediaType.TEXT_HTML)
 public class ReserveCalendarResource {
-
-    private ReserveCalendarDAO dao;
-
-    public ReserveCalendarResource( ReserveCalendarDAO dao) {
-        this.dao = dao;
-    }
 
     public ReserveCalendarResource() {
 
@@ -32,7 +25,7 @@ public class ReserveCalendarResource {
 
         CalendarDto calendarDto = createCalendarDto();
 
-        ReserveCalenderView reserveCalenderView = new ReserveCalenderView(dao.find(lngId));
+        ReserveCalenderView reserveCalenderView = new ReserveCalenderView();
 //        personView.setCalendar(calendarDto);
         return reserveCalenderView;
     }

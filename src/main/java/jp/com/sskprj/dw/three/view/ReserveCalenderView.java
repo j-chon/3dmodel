@@ -1,22 +1,11 @@
 package jp.com.sskprj.dw.three.view;
 
-import jp.com.sskprj.dw.three.entity.db.ReserveSchedule;
+import jp.com.sskprj.dw.three.view.parts.CalendarDto;
 import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
 
 public class ReserveCalenderView extends AbstractOriginalView {
-
-    @Getter
-    private ReserveSchedule reserveSchedule;
-
-    public ReserveCalenderView(ReserveSchedule reserveSchedule) {
-        super("reserveCalendar.ftl");
-        this.reserveSchedule = reserveSchedule;
-        this.viewHeaderData = new ViewHeaderData();
-        this.viewHeaderData.setTitle("ヘッダータイトル");
-        setDummy();
-    }
 
     @Getter
     @Setter
@@ -26,7 +15,16 @@ public class ReserveCalenderView extends AbstractOriginalView {
     @Setter
     private ViewHeaderData viewHeaderData;
 
-    public void setDummy() {
+
+
+    public ReserveCalenderView() {
+        super("reserveCalendar.ftl");
+    }
+
+    @Override
+    protected void initDummyData() {
+        this.viewHeaderData = new ViewHeaderData();
+        this.viewHeaderData.setTitle("ダミータイトル");
         calendarDto = createCalendarDto();
     }
 

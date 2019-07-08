@@ -19,8 +19,7 @@
     </style>
 </head>
 <body>
-<!-- calls getPerson().getName() and sanitizes it -->
-<h1>Hello, ${viewHeaderData.title}!</h1>
+<h1>こんにちは, ${viewHeaderData.title}!</h1>
 
 
 <div id="app">
