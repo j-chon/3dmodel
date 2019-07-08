@@ -2,23 +2,25 @@ package jp.com.sskprj.dw.three.view.parts;
 
 import lombok.Data;
 
+import javax.ws.rs.FormParam;
+
 @Data
 public class ReserveForm {
 
-    private String name;
+    @FormParam("customerName")
+    private String name = "";
 
-    private String name01;
+    @FormParam("phoneNumber")
+    private String phoneNumber = "";
 
-    private String phoneNumber;
+    private String targetDate = "";
 
-    private String targetDate;
+    private String startTime = "";
 
-    private String startTime;
+    private String endTime = "";
 
-    private String endTime;
+    private int isMailMagazineReceive = 0;
 
-    private int isMailMagazineReceive =0;
-
-    private String textHairImage;
+    private String textHairImage = "";
 
 }

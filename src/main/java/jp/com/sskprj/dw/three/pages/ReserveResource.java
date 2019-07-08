@@ -1,27 +1,46 @@
 package jp.com.sskprj.dw.three.pages;
 
-import jp.com.sskprj.dw.three.view.parts.CalendarDto;
 import jp.com.sskprj.dw.three.view.ReserveCalenderView;
+import jp.com.sskprj.dw.three.view.ReserveInputView;
+import jp.com.sskprj.dw.three.view.parts.CalendarDto;
+import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-@Path("/reserve/calendar/")
+@Path("/reserve/")
 @Produces(MediaType.TEXT_HTML)
-public class ReserveCalendarResource {
+public class ReserveResource {
 
-    public ReserveCalendarResource() {
+    public ReserveResource() {
 
     }
 
     @GET
-    @Path("{serviceId}")
-    public ReserveCalenderView getServiceCalendar(@PathParam("serviceId") String id) {
+    @Path("input/{serviceId}/")
+    public ReserveInputView getInput(@PathParam("serviceId") String serviceId) {
+        ReserveInputView reserveInputView = new ReserveInputView();
+        reserveInputView.setStoreId(serviceId);
+        reserveInputView.setReserveForm(new ReserveForm());
+        return reserveInputView;
+    }
 
-        long lngId = Long.parseLong(id);
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Path("confirm/")
+    public ReserveInputView postConfirm(@BeanParam ReserveForm form) {
+        ReserveInputView reserveInputView = new ReserveInputView();
+        reserveInputView.setStoreId("");
+        reserveInputView.setReserveForm(form);
+        System.out.println("==========================" + form.toString());
+        return reserveInputView;
+    }
+
+    @GET
+    @Path("calendar/{targetMonth}/")
+    public ReserveCalenderView getServiceCalendar(@PathParam("targetMonth") String targetMonth) {
+
+        long lngTargetMonth = Long.parseLong(targetMonth);
 
         CalendarDto calendarDto = createCalendarDto();
 

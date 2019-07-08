@@ -11,7 +11,7 @@ import jp.com.sskprj.dw.three.config.ThreeConfiguration;
 import jp.com.sskprj.dw.three.config.ViewConfiguration;
 import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
 import jp.com.sskprj.dw.three.pages.DummyPagesResource;
-import jp.com.sskprj.dw.three.pages.ReserveCalendarResource;
+import jp.com.sskprj.dw.three.pages.ReserveResource;
 
 public class ThreeApplication extends Application<ThreeConfiguration> {
 
@@ -23,11 +23,11 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     public void run(ThreeConfiguration configuration, Environment environment) throws Exception {
 
 //        final ReserveCalendarDAO reserveCalendarDAO = new ReserveCalendarDAO(hibernate);
-//        final ReserveCalendarResource reserveCalendarResource = new ReserveCalendarResource(reserveCalendarDAO);
+        //        final ReserveResource reserveResource = new ReserveResource(reserveCalendarDAO);
 
-        final ReserveCalendarResource reserveCalendarResource = new ReserveCalendarResource();
+        final ReserveResource reserveResource = new ReserveResource();
         final DummyPagesResource dummyPagesResource = new DummyPagesResource();
-        environment.jersey().register(reserveCalendarResource);
+        environment.jersey().register(reserveResource);
         environment.jersey().register(dummyPagesResource);
         environment.jersey().register(ViewConfiguration.createViewExceptionComponent());
 
@@ -42,9 +42,13 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     public void initialize(Bootstrap<ThreeConfiguration> bootstrap) {
 
         bootstrap.addBundle(new ViewBundle<>());
+        // クライアントテスト用
+        //        bootstrap.addBundle(new MultiPartBundle());
 
         bootstrap.addBundle(new AssetsBundle("/assets/css", "/assets/css", null, "css"));
         bootstrap.addBundle(new AssetsBundle("/assets/js", "/assets/js", null, "js"));
+        bootstrap.addBundle(new AssetsBundle("/assets/css", "/assets/image", null, "image"));
+
         bootstrap.addBundle(new MigrationsBundle<>() {
             @Override
             public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {

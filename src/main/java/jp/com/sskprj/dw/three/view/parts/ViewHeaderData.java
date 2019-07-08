@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ViewHeaderData {
 
-    private String title;
+    private String title = "";
 
 }

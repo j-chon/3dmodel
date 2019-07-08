@@ -53,8 +53,7 @@
             <li class="rslStep4 "><span>STEP4</span>予約内容の確認</li>
             <li class="rslStepEnd ">予約完了</li>
         </ol>
-        <form id="bt_reserveActionForm" method="post"
-              action="/reserve/confirm?storeId=${storeId}">
+        <form id="bt_reserveActionForm" method="post" action="/reserve/confirm/">
             <input type="hidden" name="storeId" value="${storeId}">
             <div class="yS reserveTitleOuter mT20">
                 <h3 class="yS reserveTitleInner pL10 fw_bold">お客様情報を入力してください</h3>
@@ -67,8 +66,8 @@
                         <div class="dibBL vaM w105">ご予約者氏名</div>
                     </th>
                     <td class="vaThT">
-                        <div class="mT5 fw_bold">${reserveForm.name}</div>
-                        <div class="mT5 fw_bold">${reserveForm.name01}</div>
+                        <input type="text" maxlength="30" value="${reserveForm.name}" name="customerName"
+                               class="tfFR w110 imeOff">
                     </td>
                 </tr>
                 <tr>
@@ -79,7 +78,7 @@
                     </th>
                     <td class="vaThT">
                         <div class="mT5">
-                            <input type="text" name="rsvCustomerTel" maxlength="17" value="${reserveForm.phoneNumber}"
+                            <input type="text" name="phoneNumber" maxlength="17" value="${reserveForm.phoneNumber}"
                                    id="rsvCustomerTel" class="tfFR w110 imeOff"><span class="mL5">（例）030000000</span>
                             <p class="fs10 mT2">※入力された電話番号は会員情報に反映されます。</p>
                         </div>
@@ -287,11 +286,14 @@
                     </dd>
                 </dl>
             </div>
-            <input type="hidden" name="rsvStyleStyleId" value=""><input type="hidden" name="rsvStyleStyleName" value=""><input
-                    type="hidden" name="rsvStyleStyleFilename" value=""><input type="hidden" name="flgDetail" value=""
-                                                                               id="flgDetail"></form>
+            <input type="hidden" name="rsvStyleStyleId" value="">
+            <input type="hidden" name="rsvStyleStyleName" value="">
+            <input type="hidden" name="rsvStyleStyleFilename" value="">
+            <input type="hidden" name="flgDetail" value="" id="flgDetail">
+            <input type="submit" value="確認画面へ"/>
+        </form>
         <div class="mT10">
-            <a href="https://beauty.hotpepper.jp/CSP/bt/reserve/goBackSelectTimezoneStylist?storeId=H000376765"
+            <a href="/reserve/000376765"
                title="戻る" class="btnCssWhite dib w100 pV8">戻る</a>
         </div>
 

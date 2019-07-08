@@ -27,7 +27,6 @@ public class ReserveInputView extends AbstractOriginalView{
     protected void initDummyData() {
         this.reserveForm = new ReserveForm();
         this.reserveForm.setName("");
-        this.reserveForm.setName01("");
         this.reserveForm.setPhoneNumber("");
 
     }

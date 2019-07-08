@@ -102,7 +102,7 @@
 }
 .rslStep1:before,
 .rslStep2:before {
-	background-image: url(/CSP/img/common/sprites/icon_reserve.png?switch=20190627);
+    background-image: url(/assets/image/icon_reserve.gif);
 	background-repeat: no-repeat;
 	content: "";
 	display: block;
@@ -178,8 +178,8 @@
 }
 
 .topHalf2 {
-margin-top:-11.5px;
-top:50%;
+    margin-top: -11.5px;
+    top: 50%;
 }
 
 /* タブエリア */
@@ -747,43 +747,46 @@ textarea	{ height:55px; }
 	padding: 8px 11px;
 }
 
-.popAdd {
-	background: url("/CSP/img/logo/lin_s_tenpo.gif?switch=20190627") no-repeat left top;
-	margin-top: 7px;
-	padding-top: 8px;
-}
 .titleLine {
 	border-bottom: 3px solid #e4e0d9;
 	padding: 5px 9px 6px;
 	margin-bottom: 17px;
 }
 
-.imgClose 		{ background: url(/CSP/img/bt/icons_buttons/close.gif?switch=20190627) no-repeat 0 0; width: 80px; height: 24px; }
-.imgClose:hover	{ background: url(/CSP/img/bt/icons_buttons/close.gif?switch=20190627) no-repeat 0 -24px; }
+.imgClose {
+    background: url(/assets/image/close.gif?) no-repeat 0 0;
+    width: 80px;
+    height: 24px;
+}
 
-.selectBtn 		{ background: url(/CSP/img/bt/icons_buttons/select2.gif?switch=20190627) no-repeat 0 0; width: 80px; height: 24px; }
-.selectBtn:hover{ background: url(/CSP/img/bt/icons_buttons/select2.gif?switch=20190627) no-repeat 0 -24px; }
+.imgClose:hover {
+    background: url(/assets/image/close.gif?) no-repeat 0 -24px;
+}
+
+.selectBtn {
+    background: url(/assets/image/select2.gif) no-repeat 0 0;
+    width: 80px;
+    height: 24px;
+}
+
+.selectBtn:hover {
+    background: url(/assets/image/select2.gif) no-repeat 0 -24px;
+}
 
 .bdCell3 {
 	border-top: 1px solid #A6A6A6;
 	border-left: 1px solid #A6A6A6;
 }
-.bdCell3 th,
-.bdCell3 td {
+
+.bdCell3 th, .bdCell3 td {
 	border-right: 1px solid #A6A6A6;
 	border-bottom: 1px solid #A6A6A6;
-}
-
-/* ×・・Eーク */
-.batsu {
-	margin-top: -5px;
 }
 
 /************************************************************
  * CLASSES(プロパティ)
  ************************************************************/
 
-/
 /* HEIGHT */
 .h32	{ height: 32px; }
 .h45	{ height: 45px; }
@@ -1011,7 +1014,7 @@ textarea	{ height:55px; }
  ************************************************************/
 
 .reserveCompleteMessage	{
-	background-image: url(/CSP/img/bt/repeat/bg_reserve_heading.png?switch=20190627);
+    background-image: url(/assets/image/bg_reserve_heading.gif);
 	background-repeat: repeat;
 	background-position: 0 0;
 	border-bottom: 1px solid #A6A6A6;
@@ -1115,16 +1118,6 @@ textarea	{ height:55px; }
 	margin-top: 2px;
 	margin-right: 5px;
 }
-.secondHeading {
-	height: 15px;
-	background: url(/CSP/img/bt/icons/icon_heading.png?switch=20190627) no-repeat 0 1px;
-	padding-left: 25px;
-	padding-bottom: 7px;
-	font-size: 15px;
-	font-weight: bold;
-	color: #444444;
-	font-family: 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'ＭＳ Ｐゴシック', 'MS P Gothic', 'Osaka', arial, sans-serif, verdana, Helvetica;
-}
 .singleMenuHead {
     color: #CC4466;
     background-color: #F5F3F1;
@@ -1139,7 +1132,7 @@ textarea	{ height:55px; }
 }
 
 .couponMenuIcon			{
-	 background-color: #FF8A90;
+    background-color: #FF8A90;
 }
 
 .couponNoMenuIcon		{
@@ -1206,8 +1199,6 @@ textarea	{ height:55px; }
 	display: block;
 }
 .stylistPic img:hover {
-	-ms-filter: alpha(opacity="70");
-	filter: alpha(opacity="70");
 	opacity: 0.7;
 }
 .stylePageTitleOuter {
@@ -1236,8 +1227,6 @@ textarea	{ height:55px; }
 	border: 1px solid #A6A39B;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	-ms-filter: alpha(opacity="0");
-	filter: alpha(opacity="0");
 	opacity: 0;
 	padding: 30px 10px 20px;
 	position: relative;
@@ -1312,8 +1301,6 @@ textarea	{ height:55px; }
 }
 .stylistDetailBg {
 	background: #8C867C;
-	-ms-filter: alpha(opacity="0");
-	filter: alpha(opacity="0");
 	height: 100%;
 	left: 0;
 	opacity: 0;
@@ -1324,7 +1311,7 @@ textarea	{ height:55px; }
 }
 .stylistDetailClose {
 	background-color: #FFFFFF;
-	background-image: url(/CSP/img/common/icon/icon_close.png?switch=20190627);
+    background-image: url(/assets/image/icon_close.gif);
 	background-position: 50%;
 	background-repeat: no-repeat;
 	border: 2px solid #A6A39B;
