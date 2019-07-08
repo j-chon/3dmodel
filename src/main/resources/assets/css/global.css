@@ -1,0 +1,296 @@
+@charset "utf-8";
+
+/* 見出し */
+.mainCntSecondTtl {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1;
+	padding: 10px 0 10px 14px;
+	position: relative;
+}
+.mainCntSecondTtl:before {
+	background: #BFB4AB;
+	border-radius: 4px;
+	bottom: 0;
+	content: "";
+	display: block;
+	height: auto;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 4px;
+}
+.mainCntSecondTtl.cPink:before {
+	background: #AE2D5B;
+}
+.mainCntSecondTtl.cPurple:before {
+	background: #8C61B8;
+}
+.mainCntSecondTtl.twoLine {
+	padding-left: 10px;
+}
+
+/* PAGETOP */
+.pageTopImg {
+	background: url(/CSP/img/common/btn_pageTop.png?switch=20190627) no-repeat;
+	bottom: 50px;
+	display: none;
+	height: 54px;
+	text-indent: 100%;
+	overflow: hidden;
+	position: fixed;
+	margin-right: -554px;
+	right: 50%;
+	width: 54px;
+	white-space: nowrap;
+	z-index: 999;
+}
+@media screen and (max-width: 1148px) {
+	.pageTopImg {
+		margin-right: 0;
+		right: 10px;
+	}
+}
+
+/* 性別切り替え */
+.changeGender {
+	border-radius: 4px;
+	display: table;
+	line-height: 26px;
+	position: absolute;
+	right: 215px;
+	top: 3px;
+}
+.changeGender > li {
+	background-color: #FFFFFF;
+	border-radius: 4px 0 0 4px;
+	box-sizing: border-box;
+	display: table-cell;
+	text-align: center;
+	width: 74px;
+}
+.changeGender li + li {
+	border-left: solid 1px #7A6F6F;
+	border-radius: 0 4px 4px 0;
+}
+.changeGender > li > .btnChangeGender {
+	border-color: #7A6F6F;
+	border-radius: 4px 0 0 4px;
+	border-style: solid;
+	border-width: 1px 0 1px 1px;
+	color: #7B7169;
+	cursor: pointer;
+	display: block;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.changeGender > li > .btnChangeGender:hover {
+	opacity: 0.7;
+}
+.changeGender li + li > .btnChangeGender {
+	border-color: #7A6F6F;
+	border-radius: 0 4px 4px 0;
+	border-style: solid;
+	border-width: 1px 1px 1px 0;
+}
+.changeGender > li > .btnChangeGender.isCr {
+	background: #DCD6D2;
+}
+.changeGender > li > .btnChangeGender.isCr:hover {
+	opacity: 1;
+}
+
+/* Radio, Checkbox */
+.basicRadio,
+.basicCheck {
+	padding-right: 5px;
+	vertical-align: middle;
+}
+.basicRadio,
+.basicCheck,
+.basicRadio + label,
+.basicCheck + label {
+	cursor: pointer;
+}
+.basicRadio[disabled] + label,
+.basicCheck[disabled] + label {
+	color: #CCCCCC;
+}
+.basicRadio[disabled],
+.basicCheck[disabled],
+.basicRadio[disabled] + label,
+.basicCheck[disabled] + label {
+	cursor: default;
+}
+
+@media (min-width: 1px) {
+	.basicRadio,
+	.basicCheck {
+		display: none;
+		margin: 0;
+	}
+	.basicRadio + label,
+	.basicCheck + label {
+		display: inline-block;
+		padding: 0 0 0 19px;
+		position: relative;
+	}
+	.basicRadio + label:before,
+	.basicCheck + label:before {
+		background-color: #FFFFFF;
+		border: 1px solid #CCCCCC;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		content: "";
+		display: block;
+		height: 14px;
+		left: 0;
+		position: absolute;
+		width: 14px;
+	}
+	.basicRadio + label:before,
+	.basicRadio + label:after,
+	.basicCheck + label:before,
+	.basicCheck:checked + label:after {
+		top: -1px;
+	}
+	.basicRadio + label:before {
+		border-radius: 30px;
+	}
+	.basicCheck + label:before {
+		border-radius: 4px;
+	}
+	.basicRadio + label:after,
+	.basicCheck:checked + label:after {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		content: "";
+		display: block;
+		margin-top: 3px;
+		position: absolute;
+	}
+	.basicRadio + label:after {
+		background-color: #CCCCCC;
+		border-radius: 8px;
+		height: 8px;
+		left: 3px;
+		width: 8px;
+	}
+	.basicCheck:checked + label:after {
+		border-color: #FFFFFF;
+		border-style: solid;
+		border-width: 0 0 2px 2px;
+		height: 6px;
+		left: 3px;
+		-webkit-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		width: 8px;
+	}
+	.basicRadio:disabled + label:before,
+	.basicCheck:disabled + label:before,
+	.basicRadio:checked:disabled + label:before,
+	.basicCheck:checked:disabled + label:before {
+		background-color: #FFFFFF;
+		border-color: #E6E6E6;
+	}
+	.basicRadio:checked:disabled + label:after,
+	.basicRadio:disabled + label:after {
+		background-color: #E6E6E6;
+	}
+	.basicCheck:checked:disabled + label:after {
+		content: none;
+	}
+}
+
+.box_border {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/* MARGIN */
+.mB5 { margin-bottom: 5px; }
+.mHA { margin-right: auto; margin-left: auto; }
+.mV5 { margin-top: 5px; margin-bottom: 5px; }
+.mV10 { margin-top: 10px; margin-bottom: 10px; }
+/* PADDING */
+.pR20 { padding-right: 20px; }
+.pH20 { padding-right: 20px; padding-left: 20px; }
+/* WIDTH */
+.w1000 { width: 1000px; }
+
+/** 差し込みバナーコンテンツ */
+.bannerContents {
+	position: relative; 
+	width: 990px; 
+	margin: 0 auto;
+}
+
+/* ギフト券吹き出し */
+.myMenuGiftPopup {
+	background-color: #FFFFFF;
+	border: 2px solid #D36985;
+	border-radius: 10px;
+	box-sizing: border-box;
+	display: none;
+	left: 50%;
+	letter-spacing: 0;
+	margin-top: -10px;
+	padding: 10px 35px 10px 10px;
+	position: absolute;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	z-index: 100;
+}
+.myMenuGiftPopup::before,
+.myMenuGiftPopup::after {
+	border-style: solid;
+	content: "";
+	height: 0;
+	position: absolute;
+	width: 0;
+}
+.myMenuGiftPopup::before {
+	border-color: #D36985 transparent transparent transparent;
+	border-width: 10px 8px 0 8px;
+	bottom: -10px;
+	left: 50px;
+}
+.myMenuGiftPopup::after {
+	border-color: #FFFFFF transparent transparent transparent;
+	border-width: 8px 6px 0 6px;
+	bottom: -7px;
+	left: 52px;
+}
+.myMenuGiftPopupClose {
+	bottom: 0;
+	height: 20px;
+	margin: auto;
+	position: absolute;
+	right: 10px;
+	text-indent: -9999px;
+	top: 0;
+	width: 20px;
+	z-index: 1001;
+}
+.myMenuGiftPopupClose::before,
+.myMenuGiftPopupClose::after {
+	background-color: #B4B4B4;
+	bottom: 0;
+	content: "";
+	height: 2px;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 12px;
+}
+.myMenuGiftPopupClose::before {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.myMenuGiftPopupClose::after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
