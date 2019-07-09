@@ -5,9 +5,20 @@ import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ReserveInputView extends AbstractOriginalView{
+/**
+ * 確認画面用view
+ */
+public class ReserveConfirmView extends AbstractOriginalView {
 
-    static final String TEMPLATE_NAME = "reserveInput.ftl";
+    private static final String TEMPLATE_NAME = "reserveConfirm.ftl";
+
+    @Getter
+    @Setter
+    private String storeName = "";
+
+    @Getter
+    @Setter
+    private String storeId = "";
 
     @Getter
     @Setter
@@ -15,26 +26,18 @@ public class ReserveInputView extends AbstractOriginalView{
 
     @Getter
     @Setter
-    private String storeName="";
-
-    @Getter
-    @Setter
-    private String storeId="";
-
-
-    @Getter
-    @Setter
     private ReserveForm reserveForm;
 
-    public ReserveInputView() {
+    public ReserveConfirmView() {
         super(TEMPLATE_NAME);
     }
 
     @Override
     protected void initDummyData() {
         this.reserveForm = new ReserveForm();
-        this.reserveForm.setCustomerName("");
-        this.reserveForm.setCustomerPhoneNumber("");
+        this.viewHeaderData = new ViewHeaderData();
+        this.reserveForm.setCustomerName("a");
+        this.reserveForm.setCustomerPhoneNumber("b");
 
     }
 }

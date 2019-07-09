@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<#-- @ftlvariable name="" type="jp.com.sskprj.dw.three.view.ReserveInputView" -->
+<#-- @ftlvariable name="" type="jp.com.sskprj.dw.three.view.ReserveConfirmView" -->
 <html lang="ja">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="copyright" content="Copyright ©">
     <meta name="robots" content="index, follow">
-    <title>お客様情報入力</title>
+    <title>${viewHeaderData.title}</title>
     <link rel="canonical" href="">
     <link rel="shortcut icon" href="favicon.ico">
     <link href="/assets/css/BPRV.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/global.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
 </head>
-<body id="pageTop" style="">
+<body id="pageTop">
 <!-- ↓header -->
 <div id="reserveHeaderWrapper">
     <div id="header">
@@ -32,9 +32,9 @@
 
         <div class="rsvSalonHeader">
             <div class="cFix">
-                <span class="rsvType">即時予約</span>
+                <span class="rsvType">仮予約</span>
                 <p class="rsvTypeLead">
-                    ※即時予約は、予約完了時点で予約が確定します。そのままご来店ください。
+                    ※まだ確定ではありません。
                 </p>
             </div>
             <div class="rsvSalonNameWrap cFix">
@@ -44,14 +44,14 @@
         </div>
         <ol class="rsvStepList cFix">
             <li class="rslStep2 passive"><span>STEP2</span>日時を指定する</li>
-            <li class="rslStep3 active"><span>STEP3</span>お客様情報入力</li>
-            <li class="rslStep4 "><span>STEP4</span>予約内容の確認</li>
+            <li class="rslStep3 passive"><span>STEP3</span>お客様情報入力</li>
+            <li class="rslStep4 active "><span>STEP4</span>予約内容の確認</li>
             <li class="rslStepEnd ">予約完了</li>
         </ol>
-        <form id="bt_reserveActionForm" method="post" action="/reserve/confirm/">
+        <form id="bt_reserveActionForm" method="post" action="/reserve/complete/">
             <input type="hidden" name="storeId" value="${storeId}">
             <div class="yS reserveTitleOuter mT20">
-                <h3 class="yS reserveTitleInner pL10 fw_bold">お客様情報を入力してください</h3>
+                <h3 class="yS reserveTitleInner pL10 fw_bold">お客様情報の確認</h3>
             </div>
             <table cellspacing="0" class="wFull bdCell  mT10">
                 <tbody>
@@ -60,8 +60,7 @@
                         <div class="dibBL vaM w105">ご予約者氏名</div>
                     </th>
                     <td class="vaThT">
-                        <input type="text" maxlength="30" value="${reserveForm.customerName}" name="cast_name"
-                               class="tfFR w110 imeOff">
+                        <div class="dibBL vaM">${reserveForm.customerName}</div>
                     </td>
                 </tr>
                 <tr>
@@ -72,9 +71,7 @@
                     </th>
                     <td class="vaThT">
                         <div class="mT5">
-                            <input type="text" name="cast_phone_num" value="${reserveForm.customerPhoneNumber}"
-                                   maxlength="17" class="tfFR w110 imeOff">
-                            <span class="mL5">（例）030000000</span>
+                            <div class="dibBL vaM">${reserveForm.customerPhoneNumber}</div>
                             <p class="fs10 mT2">※入力された電話番号は会員情報に反映されます。</p>
                         </div>
                     </td>
@@ -168,16 +165,7 @@
                             <td class="vaM lh18">
                                 <ul class="cFix">
                                     <li class="fl mR10 nowrap">
-                                        <input type="radio" name="rsvDemandServiceCd" value="1" id="funToTalk"
-                                               class="cbF"><label for="funToTalk">なるべく楽しく話したい</label>
-                                    </li>
-                                    <li class="fl mR10 nowrap">
-                                        <input type="radio" name="rsvDemandServiceCd" value="2" id="quietly"
-                                               class="cbF"><label for="quietly">なるべく静かに過ごしたい</label>
-                                    </li>
-                                    <li class="fl mR10 nowrap">
-                                        <input type="radio" name="rsvDemandServiceCd" value="0" id="notCareService"
-                                               class="cbF"><label for="notCareService">特にこだわらない</label>
+                                        <div class="dibBL vaM">${reserveForm.customerRequest}</div>
                                     </li>
                                 </ul>
                             </td>
@@ -192,7 +180,7 @@
                         <tr>
                             <td>
                                 <div>
-                                    <textarea name="rsvDemandAskDetail" cols="141" rows="3" id="rsvDemandAskDetail"
+                                    <textarea name="cast_request_detail" cols="141" rows="3"
                                               class="taF w730 h55 imeOn" style="color: rgb(204, 204, 204);"></textarea>
                                 </div>
                                 <p>（全角200文字以内）</p>
@@ -208,7 +196,7 @@
                         <tr>
                             <th class="w170 bgLGray fw_bold">なりたいイメージ</th>
                             <td class="vaM lh23 cFix">
-                                <input type="text" value="${reserveForm.textHairImage}"/>
+                                <div class="dibBL vaM">${reserveForm.textHairImage}</div>
                             </td>
                         </tr>
                         </tbody>
@@ -224,7 +212,7 @@
                 <tr>
                     <th class="w170 bgLGray fw_bold">合計金額</th>
                     <td class="lh18" colspan="2">
-                        <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">12,960</span></div>
+                        <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">${reserveForm.totalCharge}</span></div>
                         <div class="fgOrange dibBL vaM fs10 pL1e txt1e w400">※端数は切り下げです。</div>
                     </td>
                 </tr>

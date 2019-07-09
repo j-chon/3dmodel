@@ -16,7 +16,7 @@ th		{ text-align: left; }
 
 iframe	{ vertical-align: middle; }
 
-/* clearfix */
+/* clear_fix */
 .cFix:after {
 	content: "";
 	display: block;
@@ -126,7 +126,6 @@ h1, h2, h3, h4, h5, h6 {
 .move {
 	position: absolute;
 	bottom: -2px;
-	_bottom: -3px;
 	right: 20px;
 	z-index: 3;
 }
@@ -142,11 +141,6 @@ h1, h2, h3, h4, h5, h6 {
 #preContents {
 	padding: 0 20px;
 }
-
-/* マップArea */
-.bgRouteMapTitle	{ background: url("/CSP/img/bt/map/bg/bg_routemaptitle.gif") no-repeat; display: block; width: 291px; height: 25px; padding:5px 0 0 10px; }
-.btnSearchStation	{ background: url("/CSP/img/bt/map/button/btn_searchbystation.gif?switch=20190627") no-repeat 0 0; display: block; width: 143px; height: 24px; }
-.btnSearchStation:hover	{ background: url("/CSP/img/bt/map/button/btn_searchbystation.gif?switch=20190627") no-repeat 0 -24px; display: block; width: 143px; height: 24px; }
 
 /* コンテンツ */
 #contents {
@@ -183,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size:10px;
 	padding:1px 5px;
 	text-align:center;
-	background-color:#FF0000;
+	background-color: #85ef9a;
 }
 .iconMustEmpty {
 	width: 20px;
@@ -412,15 +406,6 @@ h1, h2, h3, h4, h5, h6 {
 	color: #435B67 !important;
 }
 
-.postSalonInfo {
-	position: absolute;
-	top: 20px;
-	left: 320px;
-	background: url("/CSP/img/common/icon_postsalon.png?switch=20190627") no-repeat left top;
-	padding-left: 20px;
-	line-height: 16px;
-	font-weight: bold;
-}
 .postSalonInfo a {
 	margin-left: 5px;
 	font-weight: normal;
@@ -464,12 +449,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 10px;
 	padding: 0 10px;
 }
-#popUpFooter {
-	background: url(/CSP/img/common/bg_popup_footer.gif?switch=20190627) repeat-x left top;
-	height: 36px;
-	min-width: 560px;
-	margin-top: 20px;
-}
 #popUpFooter div.footerBody {
 	margin: 0px auto;
 	position: relative;
@@ -491,17 +470,6 @@ h1, h2, h3, h4, h5, h6 {
 #popUpFooter p.close a:hover {
 	background-position: 0px -24px !important;
 	height: 24px;
-}
-#popUpFooter p.close a {
-	background: url(/CSP/img/bt/icons_buttons/close.gif?switch=20190627) no-repeat;
-	background-position: 0px 0px;
-	display: block;
-	overflow: hidden;
-	text-indent: -999px;
-	height: 24px;
-	/*\*//*/
-	padding-bottom: 21px;
-	/**/
 }
 
 /* 会員登録 */
@@ -960,11 +928,6 @@ h1, h2, h3, h4, h5, h6 {
 	padding-left: 18px;
 	padding-right: 18px;
 }
-.btnSearchFreeword:hover {
-	-ms-filter: alpha(opacity="70");
-	filter: alpha(opacity="70");
-	opacity: 0.7;
-}
 /* / SEARCH KEYWORD */
 
 /* ショートカットリンク */
@@ -1008,14 +971,6 @@ h1, h2, h3, h4, h5, h6 {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	text-align: center;
-}
-.closeText {
-	background: url(/CSP/img/hc/icons/icon_tb_close.png?switch=20190627) no-repeat left center;
-	color: #BFB4AB;
-	font-weight: bold;
-	font-size: 14px;
-	padding-left: 20px;
-	text-decoration: none;
 }
 .btnCloseWrap a:link,
 .btnCloseWrap a:hover,
@@ -1134,18 +1089,6 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1;
 }
 
-.skinHeadingWrapper {
-	height: 12px;
-	border-bottom: 1px solid #959595;
-	background: url(/CSP/img/bt/icons/icon_heading_bt.png?switch=20190627) no-repeat 0 0;
-	padding-left: 24px;
-	padding-bottom: 9px;
-	line-height: 18px;
-	font-size:13px;
-	font-weight:bold;
-	color:#444444;
-	font-family: 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'ＭＳ Ｐゴシック', 'MS P Gothic', 'Osaka', arial, sans-serif, verdana, Helvetica;
-}
 
 .skinHeadingWrapper h2,
 .skinHeadingWrapper h3 {
@@ -1183,14 +1126,11 @@ h1, h2, h3, h4, h5, h6 {
 	border: 0;
 }
 
-.imgClose 					{ background: url(/CSP/img/bt/icons_buttons/btn_close.gif?switch=20190627) no-repeat 0 0; width: 80px; height: 24px; }
-.imgClose:hover				{ background: url(/CSP/img/bt/icons_buttons/btn_close.gif?switch=20190627) no-repeat 0 -24px; }
-.selectBtn 					{ background: url(/CSP/img/bt/icons_buttons/select.gif?switch=20190627) no-repeat 0 0; width: 80px; height: 24px; }
-.selectBtn:hover			{ background: url(/CSP/img/bt/icons_buttons/select.gif?switch=20190627) no-repeat 0 -24px; }
-.print						{ background: url(/CSP/img/bt/icons_buttons/btn_print.gif?switch=20190627) no-repeat 0 0; width: 80px; height: 24px; }
-.print:hover				{ background: url(/CSP/img/bt/icons_buttons/btn_print.gif?switch=20190627) no-repeat 0 -24px; }
-.agree						{ background: url(/CSP/img/bt/icons_buttons/btn_agree_send.png?switch=20190627) no-repeat 0 0; width: 190px; height: 32px; }
-.agree:hover				{ background-position: 0 -32px; }
+.selectBtn {
+	background: url(/assets/image/select2.gif) no-repeat 0 0;
+	width: 80px;
+	height: 24px;
+}
 
 /* QR CODE */
 .qrcode {
@@ -1888,7 +1828,17 @@ h1, h2, h3, h4, h5, h6 {
 /* ヘッダー */
 .logo			{ background-position: 4px 0px; display: block; width: 512px; height: 52px; text-indent: -9999px; overflow: hidden; }
 .popUpLogo		{ background-position: -20px -260px; display: block; width: 52px; height: 17px; text-indent: -9999px; overflow: hidden; }
-.smallLogo		{ background-position: -580px 0; display: block; width: 118px; height: 49px; text-indent: -9999px; overflow: hidden; background-image: url(/CSP/img/bt/sprites/c.png?switch=20190627) !important; background-repeat: no-repeat; }
+
+.smallLogo {
+	background-position: -580px 0;
+	display: block;
+	width: 118px;
+	height: 49px;
+	text-indent: -9999px;
+	overflow: hidden;
+	background-image: url(/assets/image/c.png) !important;
+	background-repeat: no-repeat;
+}
 .salon			{ background-position: -20px -72px; display: block; width: 134px; height: 35px; margin-right: 2px; text-indent: -9999px; overflow: hidden; }
 .salon:hover	{ background-position: -20px -107px; }
 .salonCurrent	{ background-position: -20px -142px; display: block; width: 134px; height: 35px; margin-right: 2px; text-indent: -9999px; overflow: hidden; }
@@ -2415,11 +2365,14 @@ h1, h2, h3, h4, h5, h6 {
  * スプライト画像 - アイコン（i.png）
  ************************************************************/
 
-.iS		{ background-image: url("/CSP/img/bt/sprites/i.png?switch=20190627") !important; background-repeat: no-repeat; }
+.iS {
+	background-image: url("/assets/image/i.png?switch=20190627") !important;
+	background-repeat: no-repeat;
+}
 .iSb:before,
 .iSa:after {
 	background-color: transparent;
-	background-image: url("/CSP/img/bt/sprites/i.png?switch=20190627");
+	background-image: url("/assets/image/i.png?switch=20190627");
 	background-repeat: no-repeat;
 	border: 0;
 	content: " ";
@@ -2430,7 +2383,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 左付 */
 .arrowT	{
 	display: inline-block;
-	background-image: url(/CSP/img/bt/sprites/i.png?switch=20190627) !important;
+	background-image: url(/assets/image/i.png?switch=20190627) !important;
 	background-repeat: no-repeat;
 	background-position: -193px -2px; padding-left: 10px;
 }
@@ -3109,8 +3062,19 @@ h1, h2, h3, h4, h5, h6 {
 .rPoint{background-position: -187px -5200px; padding-left: 17px; height: 13px;}
 .alertIcon{background-position: -185px -5236px; padding-left: 18px; height: 14px; display: inline-block;}
 
-.inService		{ background: url("/CSP/img/bt/icons_buttons/hed_service.gif?switch=20190627") no-repeat; display: block; width:140px; height:22px; }
-.recruitSite	{ background: url("/CSP/img/bt/icons_buttons/hed_recruitsite.gif?switch=20190627") no-repeat; display: block; width:114px; height:22px; }
+.inService {
+	background: url("/assets/image/hed_service.gif?switch=20190627") no-repeat;
+	display: block;
+	width: 140px;
+	height: 22px;
+}
+
+.recruitSite {
+	background: url("/assets/image/hed_recruitsite.gif?switch=20190627") no-repeat;
+	display: block;
+	width: 114px;
+	height: 22px;
+}
 
 /* リンクリスト */
 .linkListDay li {
@@ -3240,7 +3204,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 	width: 13px;
 	height: 18px;
-	background: url(/CSP/img/common/btn_cal_arrow.png?switch=20190627) 0 0 no-repeat;
+	background: url(/assets/image/btn_cal_arrow.png?switch=20190627) 0 0 no-repeat;
 	text-indent: -9999px;
 }
 .dyn_cal .dyn_cal_prev a:hover {
@@ -3255,7 +3219,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 	width: 13px;
 	height: 18px;
-	background: url(/CSP/img/common/btn_cal_arrow.png?switch=20190627) -13px 0 no-repeat;
+	background: url(/assets/image/btn_cal_arrow.png?switch=20190627) -13px 0 no-repeat;
 	text-indent: -9999px;
 }
 .dyn_cal .dyn_cal_next a:hover {
@@ -3777,11 +3741,6 @@ td.bgPink8.fgWhite {
 .btn2H28:hover,
 .btn2H30:hover,
 .btn2H32:hover,
-.btn2H50:hover {
-	-ms-filter: alpha(opacity="70");
-	filter: alpha(opacity="70");
-	opacity: 0.7;
-}
 .btn2H24 {
 	height: 24px;
 	line-height: 22px;

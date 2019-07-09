@@ -2,6 +2,7 @@ package jp.com.sskprj.dw.three.pages;
 
 import jp.com.sskprj.dw.three.view.AbstractOriginalView;
 import jp.com.sskprj.dw.three.view.ReserveCalenderView;
+import jp.com.sskprj.dw.three.view.ReserveConfirmView;
 import jp.com.sskprj.dw.three.view.ReserveInputView;
 
 import javax.ws.rs.GET;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 public class DummyPagesResource {
 
     public DummyPagesResource() {
+
 
     }
 
@@ -30,5 +32,10 @@ public class DummyPagesResource {
         return new ReserveInputView().getDummyView();
     }
 
+    @GET
+    @Path("reserveConfirm")
+    public AbstractOriginalView getReserve02() {
+        return new ReserveConfirmView().getDummyView();
+    }
 
 }
