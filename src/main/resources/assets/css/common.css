@@ -1820,25 +1820,11 @@ h1, h2, h3, h4, h5, h6 {
 /* cursor */
 .csrD			{ cursor: default !important; }
 
-/************************************************************
- * スプライト画像 - 共通（c.png）
- ************************************************************/
-.cS		{ background-image: url(/CSP/img/bt/sprites/c.png?switch=20190627) !important; background-repeat: no-repeat; border: 0; }
 
 /* ヘッダー */
 .logo			{ background-position: 4px 0px; display: block; width: 512px; height: 52px; text-indent: -9999px; overflow: hidden; }
 .popUpLogo		{ background-position: -20px -260px; display: block; width: 52px; height: 17px; text-indent: -9999px; overflow: hidden; }
 
-.smallLogo {
-	background-position: -580px 0;
-	display: block;
-	width: 118px;
-	height: 49px;
-	text-indent: -9999px;
-	overflow: hidden;
-	background-image: url(/assets/image/c.png) !important;
-	background-repeat: no-repeat;
-}
 .salon			{ background-position: -20px -72px; display: block; width: 134px; height: 35px; margin-right: 2px; text-indent: -9999px; overflow: hidden; }
 .salon:hover	{ background-position: -20px -107px; }
 .salonCurrent	{ background-position: -20px -142px; display: block; width: 134px; height: 35px; margin-right: 2px; text-indent: -9999px; overflow: hidden; }
@@ -3199,28 +3185,6 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute;
 	top: 46px;
 	left: 12px;
-}
-.dyn_cal .dyn_cal_prev a {
-	display: block;
-	width: 13px;
-	height: 18px;
-	background: url(/assets/image/btn_cal_arrow.png?switch=20190627) 0 0 no-repeat;
-	text-indent: -9999px;
-}
-.dyn_cal .dyn_cal_prev a:hover {
-	background-position: 0 -18px;
-}
-.dyn_cal .dyn_cal_next {
-	position: absolute;
-	top: 46px;
-	right: 13px;
-}
-.dyn_cal .dyn_cal_next a {
-	display: block;
-	width: 13px;
-	height: 18px;
-	background: url(/assets/image/btn_cal_arrow.png?switch=20190627) -13px 0 no-repeat;
-	text-indent: -9999px;
 }
 .dyn_cal .dyn_cal_next a:hover {
 	background-position: -13px -18px;

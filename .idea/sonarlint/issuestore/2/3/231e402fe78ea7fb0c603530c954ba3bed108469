@@ -1,5 +1,5 @@
 
-nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(â¡Åëùÿÿÿÿ8İÆÃü»-
-nsquid:CommentedOutCodeLineS"<This block of commented-out lines of code should be removed.(ğ‡†Íÿÿÿÿÿ8ãõãü»-
-Asquid:S11483"#Use a logger to log this exception.(òçøì8¬ØÈ¾¼-
-fsquid:UnusedPrivateMethod>":Remove this unused private "createHibernateBundle" method.(¶šÂñ8°Ğ¡À¼-
+osquid:S11920"LDefine a constant instead of duplicating this literal "/assets/css" 3 times.(şı•Êüÿÿÿÿ8Ò¤Û½-
+isquid:CommentedOutCodeLine."<This block of commented-out lines of code should be removed.(•ÂéÊ8Ò¤Û½-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(â¡Åëùÿÿÿÿ8İÆÃü»-
+nsquid:CommentedOutCodeLine:"<This block of commented-out lines of code should be removed.(ğ‡†Íÿÿÿÿÿ8Ò¤Û½-
