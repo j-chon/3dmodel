@@ -5,7 +5,7 @@ import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ReserveCalenderView extends AbstractOriginalView {
+public class ReserveCalenderView extends AbstractOriginalView implements DummyViewInterface {
 
     @Getter
     @Setter
@@ -15,14 +15,16 @@ public class ReserveCalenderView extends AbstractOriginalView {
     @Setter
     private ViewHeaderData viewHeaderData;
 
-
-
     public ReserveCalenderView() {
         super("reserveCalendar.ftl");
+
+        this.calendarDto = createCalendarDto();
+        this.viewHeaderData = new ViewHeaderData();
+        viewHeaderData.setTitle("カレンダー");
     }
 
     @Override
-    protected void initDummyData() {
+    public void initDummyData() {
         this.viewHeaderData = new ViewHeaderData();
         this.viewHeaderData.setTitle("ダミータイトル");
         calendarDto = createCalendarDto();

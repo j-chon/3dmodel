@@ -1,9 +1,7 @@
 package jp.com.sskprj.dw.three.pages;
 
-import jp.com.sskprj.dw.three.view.AbstractOriginalView;
-import jp.com.sskprj.dw.three.view.ReserveCalenderView;
-import jp.com.sskprj.dw.three.view.ReserveConfirmView;
-import jp.com.sskprj.dw.three.view.ReserveInputView;
+import jp.com.sskprj.dw.common.DummyUtils;
+import jp.com.sskprj.dw.three.view.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -17,25 +15,30 @@ public class DummyPagesResource {
 
     public DummyPagesResource() {
 
-
     }
 
     @GET
     @Path("reserveCalender")
-    public AbstractOriginalView getReserveCalender() {
-        return new ReserveCalenderView().getDummyView();
+    public DummyViewInterface getReserveCalender() {
+        return DummyUtils.getDummyView(new ReserveCalenderView());
     }
 
     @GET
     @Path("reserveInput")
-    public AbstractOriginalView getReserve01() {
-        return new ReserveInputView().getDummyView();
+    public DummyViewInterface getReserve01() {
+        return DummyUtils.getDummyView(new ReserveInputView());
     }
 
     @GET
     @Path("reserveConfirm")
-    public AbstractOriginalView getReserve02() {
-        return new ReserveConfirmView().getDummyView();
+    public DummyViewInterface getReserve02() {
+        return DummyUtils.getDummyView(new ReserveConfirmView());
+    }
+
+    @GET
+    @Path("reserveComplete")
+    public DummyViewInterface getReserve03() {
+        return DummyUtils.getDummyView(new ReserveCompletedView());
     }
 
 }

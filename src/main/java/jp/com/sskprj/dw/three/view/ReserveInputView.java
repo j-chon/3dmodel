@@ -5,7 +5,7 @@ import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ReserveInputView extends AbstractOriginalView{
+public class ReserveInputView extends AbstractOriginalView implements DummyViewInterface {
 
     static final String TEMPLATE_NAME = "reserveInput.ftl";
 
@@ -31,7 +31,7 @@ public class ReserveInputView extends AbstractOriginalView{
     }
 
     @Override
-    protected void initDummyData() {
+    public void initDummyData() {
         this.reserveForm = new ReserveForm();
         this.reserveForm.setCustomerName("");
         this.reserveForm.setCustomerPhoneNumber("");

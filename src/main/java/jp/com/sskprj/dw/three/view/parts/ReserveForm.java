@@ -18,10 +18,10 @@ public class ReserveForm {
     private String customerPostNumber = "";
 
     @FormParam("cast_address")
-    private String customerAddress01 = "";
+    private String customerAddress = "";
 
     @FormParam("cast_address_01")
-    private String customerAddress02 = "";
+    private String customerAddress01 = "";
 
     private String targetDate = "";
 

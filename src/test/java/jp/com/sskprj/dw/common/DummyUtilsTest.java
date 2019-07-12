@@ -3,6 +3,8 @@ package jp.com.sskprj.dw.common;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.assertEquals;
 
 public class DummyUtilsTest {
@@ -13,10 +15,11 @@ public class DummyUtilsTest {
 
         ReserveForm inputForm = new ReserveForm();
 
-        new DummyUtils<ReserveForm>().setDefaultData(inputForm);
+        DummyUtils.setDefaultData(inputForm);
 
-        assertEquals("",inputForm.getName(),"Name");
-        assertEquals("",inputForm.getName01(),"Name");
+        assertEquals("", "CustomerName", inputForm.getCustomerName());
+        assertEquals("", "CustomerAddress", inputForm.getCustomerAddress());
+        assertEquals("", new BigDecimal("99999999"), inputForm.getTotalCharge());
 
     }
 }
