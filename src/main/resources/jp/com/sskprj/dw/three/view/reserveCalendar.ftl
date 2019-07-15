@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>予約</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/calendar.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.js" integrity="sha256-NncZTBhUdU+UoOVS7s+6ou1L+4zhUVvFcLxV6q3oubw=" crossorigin="anonymous"></script>
     <style>
         body {
             background-color: #cce0ff;
@@ -24,7 +23,7 @@
 
 <div id="app">
     <table class="calendar">
-        <caption><a class="prevnext" href="?y=2018&amp;m=12">＜＜</a><span class="title">2019年 1月</span><a
+        <caption><a class="prevnext" href="?y=2018&amp;m=12">＜＜</a><span class="title">${calendarDto.targetMonth}</span><a
                     class="prevnext"
                     href="?y=2019&amp;m=2">＞＞</a>
         </caption>
@@ -52,9 +51,6 @@
         </#list>
     </table>
 </div>
-
-
-
 
 </body>
 </html>

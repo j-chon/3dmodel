@@ -3,7 +3,7 @@
 <html lang="ja">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="copyright" content="Copyright ©">
+    <meta name="copyright" content="Copyright ©XXXXX">
     <meta name="robots" content="index, follow">
     <title>${viewHeaderData.title}</title>
     <link rel="canonical" href="">
@@ -16,7 +16,7 @@
 <!-- ↓header -->
 <div id="reserveHeaderWrapper">
     <div id="header">
-        <div id="smallLogoNavi">
+        <div id="smallLogoNavy">
             <div id="logo">
                 <a href="/" class="smallLogo cS offL">検索・予約サイト</a>
             </div>
@@ -30,7 +30,7 @@
     </div><!-- ↓contents -->
     <div id="reserveContents">
 
-        <div class="rsvSalonHeader">
+        <div class="reserveHeader">
             <div class="cFix">
                 <span class="rsvType">仮予約</span>
                 <p class="rsvTypeLead">
@@ -141,21 +141,16 @@
                             <th class="w170 bgLGray fw_bold">カウンセリングで知りたい<br>こと</th>
                             <td class="lh18">
                                 <ul class="cFix">
-                                    <li class="fl w205 nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="1"
-                                               id="forMyStyleToSuit" class="cbF"><label for="forMyStyleToSuit">自分に似合うスタイルについて</label>
+                                    <li class="fl w205 nowrap"><label for="forMyStyleToSuit">自分に似合うスタイルについて</label>
                                     </li>
                                     <li class="nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="2"
-                                               id="forEverydayStyling" class="cbF"><label for="forEverydayStyling">普段のスタイリングについて</label>
+                                        <label for="forEverydayStyling">普段のスタイリングについて</label>
                                     </li>
                                     <li class="fl w205 nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="4"
-                                               id="arrangeForStyle" class="cbF"><label for="arrangeForStyle">スタイルのアレンジについて</label>
+                                        <label for="arrangeForStyle">スタイルのアレンジについて</label>
                                     </li>
                                     <li class="nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="8"
-                                               id="otherFeaturedMenu" class="cbF"><label for="otherFeaturedMenu">その他おすすめのメニュー（トリートメントなど）について</label>
+                                        <label for="otherFeaturedMenu">その他おすすめのメニュー（トリートメントなど）について</label>
                                     </li>
                                 </ul>
                             </td>
@@ -256,8 +251,7 @@
                     <dd class="mmSettingBody cFix">
                         <p>最新情報をお届けします。</p>
                         <p class="fl mR30">
-                            <input type="checkbox" name="mailmagazineType" value="1"
-                                   id="forMailmagazineType" class="cbF"><label for="forMailmagazineType">ホットペッパービューティーメルマガ</label>
+                            <label for="forMailmagazineType">メルマガ</label>
                         </p>
                     </dd>
                     <dd class="mmSettingBody cFix">
@@ -274,7 +268,7 @@
             <input type="hidden" name="rsvStyleStyleName" value="">
             <input type="hidden" name="rsvStyleStyleFilename" value="">
             <input type="hidden" name="flgDetail" value="" id="flgDetail">
-            <input type="submit" value="確認画面へ"/>
+            <input type="submit" value="登録する"/>
         </form>
         <div class="mT10">
             <a href="/reserve/000376765"

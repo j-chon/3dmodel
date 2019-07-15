@@ -7,6 +7,8 @@ import lombok.Setter;
 
 public class ReserveCalenderView extends AbstractOriginalView implements DummyViewInterface {
 
+    private static final String TEMPLATE_NAME = "reserveCalendar.ftl";
+
     @Getter
     @Setter
     private CalendarDto calendarDto;
@@ -16,7 +18,7 @@ public class ReserveCalenderView extends AbstractOriginalView implements DummyVi
     private ViewHeaderData viewHeaderData;
 
     public ReserveCalenderView() {
-        super("reserveCalendar.ftl");
+        super(TEMPLATE_NAME);
 
         this.calendarDto = createCalendarDto();
         this.viewHeaderData = new ViewHeaderData();

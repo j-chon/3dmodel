@@ -36,7 +36,7 @@ public class DummyPagesResource {
     }
 
     @GET
-    @Path("reserveComplete")
+    @Path("reserveCompleted")
     public DummyViewInterface getReserve03() {
         return DummyUtils.getDummyView(new ReserveCompletedView());
     }

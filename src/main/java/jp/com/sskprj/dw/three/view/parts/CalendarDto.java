@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class CalendarDto {
 
+    private String targetMonth;
+
     private String[] titleList;
 
     private String[][] dayList;

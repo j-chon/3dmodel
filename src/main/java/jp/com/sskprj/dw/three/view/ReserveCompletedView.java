@@ -20,6 +20,10 @@ public class ReserveCompletedView extends AbstractOriginalView implements DummyV
 
     @Getter
     @Setter
+    private String reserveId = "";
+
+    @Getter
+    @Setter
     private ViewHeaderData viewHeaderData;
 
     @Getter

@@ -16,7 +16,7 @@
 <!-- ↓header -->
 <div id="reserveHeaderWrapper">
     <div id="header">
-        <div id="smallLogoNavi">
+        <div id="smallLogoNavy">
             <div id="logo">
                 <a href="/" class="smallLogo cS offL">検索・予約サイト</a>
             </div>
@@ -26,11 +26,10 @@
 <!-- ↑header -->
 <!-- ↓wrapper -->
 <div id="reserveWrapper">
-    <div class="w_break_all mT5">
-    </div><!-- ↓contents -->
+    <div class="w_break_all mT5"></div>
+    <!-- ↓contents -->
     <div id="reserveContents">
-
-        <div class="rsvSalonHeader">
+        <div class="reserveHeader">
             <div class="cFix">
                 <span class="rsvType">即時予約</span>
                 <p class="rsvTypeLead">
@@ -96,8 +95,8 @@
                         <div class="dibBL vaM w150">
                             <input type="checkbox" name="is_mail_magazine_rcv"
                                    value="${reserveForm.isMailMagazineReceive}"
-                                   checked="checked"
-                                   class="cbF"><label for="forRsvcmReceive">受け取る</label>
+                                   checked="checked" class="cbF">
+                            <label for="forRsvcmReceive">受け取る</label>
                         </div>
                         <div class="fgOrange dibBL vaM fs10 pR5 pL1e txt1e">
                             ※店舗からのメッセージがマイページに届きます。メッセージ自体を受けとりたくない場合はマイページから解除出来ます。
@@ -146,19 +145,23 @@
                                 <ul class="cFix">
                                     <li class="fl w205 nowrap">
                                         <input type="checkbox" name="rsvDemandCounselingCd" value="1"
-                                               id="forMyStyleToSuit" class="cbF"><label for="forMyStyleToSuit">自分に似合うスタイルについて</label>
+                                               id="forMyStyleToSuit" class="cbF">
+                                        <label for="forMyStyleToSuit">自分に似合うスタイルについて</label>
                                     </li>
                                     <li class="nowrap">
                                         <input type="checkbox" name="rsvDemandCounselingCd" value="2"
-                                               id="forEverydayStyling" class="cbF"><label for="forEverydayStyling">普段のスタイリングについて</label>
+                                               id="forEverydayStyling" class="cbF">
+                                        <label for="forEverydayStyling">普段のスタイリングについて</label>
                                     </li>
                                     <li class="fl w205 nowrap">
                                         <input type="checkbox" name="rsvDemandCounselingCd" value="4"
-                                               id="arrangeForStyle" class="cbF"><label for="arrangeForStyle">スタイルのアレンジについて</label>
+                                               id="arrangeForStyle" class="cbF">
+                                        <label for="arrangeForStyle">スタイルのアレンジについて</label>
                                     </li>
                                     <li class="nowrap">
                                         <input type="checkbox" name="rsvDemandCounselingCd" value="8"
-                                               id="otherFeaturedMenu" class="cbF"><label for="otherFeaturedMenu">その他おすすめのメニュー（トリートメントなど）について</label>
+                                               id="otherFeaturedMenu" class="cbF">
+                                        <label for="otherFeaturedMenu">その他おすすめのメニュー（トリートメントなど）について</label>
                                     </li>
                                 </ul>
                             </td>
@@ -177,7 +180,8 @@
                                     </li>
                                     <li class="fl mR10 nowrap">
                                         <input type="radio" name="rsvDemandServiceCd" value="0" id="notCareService"
-                                               class="cbF"><label for="notCareService">特にこだわらない</label>
+                                               class="cbF">
+                                        <label for="notCareService">特にこだわらない</label>
                                     </li>
                                 </ul>
                             </td>
@@ -224,8 +228,8 @@
                 <tr>
                     <th class="w170 bgLGray fw_bold">合計金額</th>
                     <td class="lh18" colspan="2">
-                        <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">12,960</span></div>
-                        <div class="fgOrange dibBL vaM fs10 pL1e txt1e w400">※端数は切り下げです。</div>
+                        <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">${reserveForm.totalCharge}</span></div>
+                        <div class="fgOrange dibBL vaM fs10 pL1e txt1e">※端数は切り下げです。</div>
                     </td>
                 </tr>
 
@@ -240,8 +244,8 @@
                         <div class="dibBL vaM w150">
                             <span class="fw_bold" id="paymentAmount">¥12,960</span></div>
                         <div class="fgOrange dibBL vaM fs10">
-                            <p class="pL1e txt1e w400">※予約時の選択メニューや、来店時のメニュー変更により、実際の支払い金額と異なる場合があります。</p>
-                            <p class="pL1e txt1e w400">
+                            <p class="pL1e txt1e">※予約時の選択メニューや、来店時のメニュー変更により、実際の支払い金額と異なる場合があります。</p>
+                            <p class="pL1e txt1e">
                                 ※2019年10月1日以降のご来店予定の場合、消費税率引上げに伴う料金改定により消費税の差額分、記載料金より高くなる場合があります。</p>
                         </div>
                     </td>
@@ -269,7 +273,7 @@
                         <p>最新情報をお届けします。</p>
                         <p class="fl mR30">
                             <input type="checkbox" name="mailmagazineType" value="1"
-                                   id="forMailmagazineType" class="cbF"><label for="forMailmagazineType">ホットペッパービューティーメルマガ</label>
+                                   id="forMailmagazineType" class="cbF"><label for="forMailmagazineType">メルマガ</label>
                         </p>
                     </dd>
                     <dd class="mmSettingBody cFix">
