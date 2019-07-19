@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 @Data
 public class ReserveForm {
 
+    @FormParam("token")
+    private String token = "";
+
     @FormParam("cast_name")
     private String customerName = "";
 

@@ -6,6 +6,8 @@ import jp.com.sskprj.dw.three.view.ReserveConfirmView;
 import jp.com.sskprj.dw.three.view.ReserveInputView;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 
+import javax.annotation.security.PermitAll;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -21,11 +23,16 @@ public class ReserveResource {
 
     }
 
+    @PermitAll
     @GET
-    @Path("input/{serviceId}/")
-    public ReserveInputView getInput(@PathParam("serviceId") String serviceId) {
-        ReserveInputView reserveInputView = new ReserveInputView();
+    @Path("input")
+    public ReserveInputView getInput(@QueryParam("serviceId") String serviceId, @Context HttpServletRequest request) {
+
+        System.out.println("URLは" + request.getPathInfo());
+
+        ReserveInputView reserveInputView = new ReserveInputView(request);
         reserveInputView.initDummyData();
+
         return reserveInputView;
     }
 
@@ -33,6 +40,7 @@ public class ReserveResource {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("confirm/")
     public ReserveConfirmView postConfirm(@BeanParam ReserveForm form) {
+
         ReserveConfirmView reserveConfirmView = new ReserveConfirmView();
         reserveConfirmView.initDummyData();
         return reserveConfirmView;

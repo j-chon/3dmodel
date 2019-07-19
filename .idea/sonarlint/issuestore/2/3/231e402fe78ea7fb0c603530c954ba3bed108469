@@ -1,5 +1,7 @@
 
-osquid:S11920"LDefine a constant instead of duplicating this literal "/assets/css" 3 times.(şı•Êüÿÿÿÿ8Ò¤Û½-
-isquid:CommentedOutCodeLine."<This block of commented-out lines of code should be removed.(•ÂéÊ8Ò¤Û½-
-nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(â¡Åëùÿÿÿÿ8İÆÃü»-
-nsquid:CommentedOutCodeLine:"<This block of commented-out lines of code should be removed.(ğ‡†Íÿÿÿÿÿ8Ò¤Û½-
+isquid:CommentedOutCodeLine;"<This block of commented-out lines of code should be removed.(•ÂéÊ8ãëá×¿-
+nsquid:CommentedOutCodeLineG"<This block of commented-out lines of code should be removed.(ğ‡†Íÿÿÿÿÿ8ãëá×¿-
+zsquid:UselessImportCheck"ORemove this unused import 'io.dropwizard.auth.oauth.OAuthCredentialAuthFilter'.(Ò°üÓ8°…½À-
+osquid:S1192="LDefine a constant instead of duplicating this literal "/assets/css" 3 times.(şı•Êüÿÿÿÿ8ãëá×¿-
+hsquid:UnusedPrivateMethod+"7Remove this unused private "addBasicCredential" method.(‘¸êùûÿÿÿÿ8á¿“½À-
+hsquid:CommentedOutCodeLine$"<This block of commented-out lines of code should be removed.(šÙŒ|8á¿“½À-
