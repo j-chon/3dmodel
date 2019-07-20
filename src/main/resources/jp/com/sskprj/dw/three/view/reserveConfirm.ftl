@@ -49,6 +49,7 @@
             <li class="rslStepEnd ">予約完了</li>
         </ol>
         <form id="bt_reserveActionForm" method="post" action="/reserve/complete/">
+            <input type="hidden" name="csrf_token" value="${csrfToken}"/>
             <input type="hidden" name="storeId" value="${storeId}">
             <div class="yS reserveTitleOuter mT20">
                 <h3 class="yS reserveTitleInner pL10 fw_bold">お客様情報の確認</h3>

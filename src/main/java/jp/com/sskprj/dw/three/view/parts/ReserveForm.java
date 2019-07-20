@@ -8,22 +8,22 @@ import java.math.BigDecimal;
 @Data
 public class ReserveForm {
 
-    @FormParam("token")
+    @FormParam("csrf_token")
     private String token = "";
 
-    @FormParam("cast_name")
+    @FormParam("cust_name")
     private String customerName = "";
 
-    @FormParam("cast_phone_num")
+    @FormParam("cust_phone_num")
     private String customerPhoneNumber = "";
 
-    @FormParam("cast_post_num")
+    @FormParam("cust_post_num")
     private String customerPostNumber = "";
 
-    @FormParam("cast_address")
+    @FormParam("cust_address")
     private String customerAddress = "";
 
-    @FormParam("cast_address_01")
+    @FormParam("cust_address_01")
     private String customerAddress01 = "";
 
     private String targetDate = "";

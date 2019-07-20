@@ -1,29 +1,33 @@
 package jp.com.sskprj.dw.three.pages;
 
+import jp.com.sskprj.dw.common.session.SessionReserveResult;
+import jp.com.sskprj.dw.three.service.ReserveService;
+import jp.com.sskprj.dw.three.service.entity.ReserveEntity;
 import jp.com.sskprj.dw.three.view.ReserveCalenderView;
 import jp.com.sskprj.dw.three.view.ReserveCompletedView;
 import jp.com.sskprj.dw.three.view.ReserveConfirmView;
 import jp.com.sskprj.dw.three.view.ReserveInputView;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
+import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 
-import javax.annotation.security.PermitAll;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 @Path("/reserve/")
 @Produces(MediaType.TEXT_HTML)
 public class ReserveResource {
 
-    public ReserveResource() {
+    private ReserveService reserveService;
 
+    public ReserveResource(ReserveService reserveService) {
+        this.reserveService = reserveService;
     }
 
-    @PermitAll
+    //    @PermitAll
     @GET
     @Path("input")
     public ReserveInputView getInput(@QueryParam("serviceId") String serviceId, @Context HttpServletRequest request) {
@@ -43,22 +47,23 @@ public class ReserveResource {
 
         ReserveConfirmView reserveConfirmView = new ReserveConfirmView();
         reserveConfirmView.initDummyData();
+        reserveConfirmView.setCsrfToken(form.getToken());
         return reserveConfirmView;
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("complete/")
-    public Response postComplete(@BeanParam ReserveForm form, @Context UriInfo uriInfo) {
+    public Response postComplete(@BeanParam ReserveForm form, @Context HttpServletRequest httpServletRequest) {
         try {
-            // ここにパラメータ hoge を保存する処理を書く
 
-            // TODO 予約ID固定で転送する。
-            String reserveId = "xyz01";
-            URI uri = new URI("reserve/completed/?reserveId=" + reserveId);
-            //            uri = uriInfo.getBaseUriBuilder().path("reserve/completed/?reserveId=" + reserveId).build();
+            ReserveEntity reserveEntity = reserveService.register(new ReserveEntity());
+            String reserveId = reserveEntity.getReserveId();
+            URI uri = new URI("reserve/completed/" + reserveId + "/");
             System.out.println("転送するー");
-
+            SessionReserveResult sessionReserveResult = new SessionReserveResult();
+            sessionReserveResult.setReserveId("xxxx011");
+            httpServletRequest.getSession().setAttribute("result", sessionReserveResult);
             Response response = Response.seeOther(uri).build();
             System.out.println("転送準備OK");
             return response;
@@ -76,13 +81,20 @@ public class ReserveResource {
      * @return
      */
     @GET
-    @Path("completed/")
-    public ReserveCompletedView postCompleted(@QueryParam("reserveId") String reserveId) {
-        System.out.println("転送された");
+    @Path("completed/{reserveId}/")
+    public ReserveCompletedView postCompleted(@PathParam("reserveId") String reserveId,
+            @Context HttpServletRequest httpServletRequest) {
+
+        SessionReserveResult result = (SessionReserveResult) httpServletRequest.getSession().getAttribute("result");
+        if (result == null) {
+            throw new WebApplicationException("セッションが切断されました。", Response.Status.BAD_REQUEST);
+        }
+
         ReserveCompletedView reserveCompletedView = new ReserveCompletedView();
-        reserveCompletedView.initDummyData();
-        reserveCompletedView.setReserveId(reserveId);
-        System.out.println("reserveId=" + reserveId);
+        reserveCompletedView.setViewHeaderData(new ViewHeaderData());
+        reserveCompletedView.setReserveId(result.getReserveId());
+        reserveCompletedView.setStoreName("testStoreName");
+        reserveCompletedView.setTotalCharge("\\999,0000");
         return reserveCompletedView;
     }
 

@@ -19,6 +19,7 @@ import jp.com.sskprj.dw.three.config.ViewConfiguration;
 import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
 import jp.com.sskprj.dw.three.pages.DummyPagesResource;
 import jp.com.sskprj.dw.three.pages.ReserveResource;
+import jp.com.sskprj.dw.three.service.ReserveService;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
@@ -34,8 +35,18 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     @Override
     public void run(ThreeConfiguration configuration, Environment environment) throws Exception {
 
-        final ReserveResource reserveResource = new ReserveResource();
+        final ReserveResource reserveResource = new ReserveResource(new ReserveService());
         final DummyPagesResource dummyPagesResource = new DummyPagesResource();
+
+        //
+        //        environment.jersey().register(new AbstractBinder() {
+        //            @Override
+        //            protected void configure() {
+        //                bindAsContract(ReserveService.class);
+        ////                bind(SampleServiceImpl.class).to(SampleService.class);
+        //            }
+        //        });
+
         environment.jersey().register(reserveResource);
         environment.jersey().register(dummyPagesResource);
         environment.jersey().register(ViewConfiguration.createViewExceptionComponent());

@@ -2,6 +2,7 @@ package jp.com.sskprj.dw.common.security;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import java.util.UUID;
 /**
  * Csrf対策のフィルター
  */
+@Slf4j
 public class CsrfFilter implements Filter {
 
     public static final String CSRF_TOKEN_KEY = "csrf_token";
@@ -25,33 +27,38 @@ public class CsrfFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
             throws IOException, ServletException {
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        HttpSession session = httpServletRequest.getSession();
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        HttpSession session = request.getSession();
 
-        String csrf_token_from_session = (String) session.getAttribute(CSRF_TOKEN_KEY);
+        String csrfTokenFromSession = (String) session.getAttribute(CSRF_TOKEN_KEY);
+        log.info("フィルター確認 - {}", request.getPathInfo());
 
-        if (Strings.isNullOrEmpty(csrf_token_from_session)) {
-            csrf_token_from_session = UUID.randomUUID().toString().replace("-", "");
-            session.setAttribute(CSRF_TOKEN_KEY, csrf_token_from_session);
+        // セッションにトークンがない場合
+        if (Strings.isNullOrEmpty(csrfTokenFromSession)) {
+            log.info("フィルター - {}", "トークンなし");
+            csrfTokenFromSession = UUID.randomUUID().toString().replace("-", "");
+            session.setAttribute(CSRF_TOKEN_KEY, csrfTokenFromSession);
         }
 
-        if (httpServletRequest.getMethod().equalsIgnoreCase("POST") && !EXCLUDED_TYPES.contains(
+        log.info("フィルター - {}{}", request.getMethod(), request.getContentType());
+        if (request.getMethod().equalsIgnoreCase("POST") && !EXCLUDED_TYPES.contains(
                 request.getContentType())) {
 
-            String csrf_parameter_from_request = httpServletRequest.getParameter(CSRF_TOKEN_KEY);
-            boolean matches = Objects.equals(csrf_parameter_from_request, csrf_token_from_session);
+            String csrf_parameter_from_request = request.getParameter(CSRF_TOKEN_KEY);
+            boolean matches = Objects.equals(csrf_parameter_from_request, csrfTokenFromSession);
             if (matches) {
-                System.out.println("認可");
+                log.info("許可 - {}", request.getPathInfo());
             } else {
-                httpServletResponse.sendError(403, "Unauthorized");
+                log.info("不許可 - {}", request.getPathInfo());
+                response.sendError(403, "Unauthorized");
                 return;
             }
         }
 
-        chain.doFilter(httpServletRequest, httpServletResponse);
+        chain.doFilter(request, response);
     }
 
     @Override

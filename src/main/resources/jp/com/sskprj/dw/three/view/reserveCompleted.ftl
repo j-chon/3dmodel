@@ -59,7 +59,7 @@
             <tr>
                 <th class="w170 bgLGray fw_bold">合計金額</th>
                 <td class="lh18" colspan="2">
-                    <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">${reserveForm.totalCharge}</span></div>
+                    <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">${totalCharge}</span></div>
                     <div class="fgOrange dibBL vaM fs10 pL1e txt1e w400">※端数は切り下げです。</div>
                 </td>
             </tr>

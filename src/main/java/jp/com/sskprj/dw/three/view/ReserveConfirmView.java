@@ -14,6 +14,10 @@ public class ReserveConfirmView extends AbstractOriginalView implements DummyVie
 
     @Getter
     @Setter
+    protected String csrfToken;
+
+    @Getter
+    @Setter
     private String storeName = "";
 
     @Getter

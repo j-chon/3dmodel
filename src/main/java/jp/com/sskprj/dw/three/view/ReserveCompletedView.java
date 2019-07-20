@@ -1,7 +1,5 @@
 package jp.com.sskprj.dw.three.view;
 
-import jp.com.sskprj.dw.common.DummyUtils;
-import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,11 +22,11 @@ public class ReserveCompletedView extends AbstractOriginalView implements DummyV
 
     @Getter
     @Setter
-    private ViewHeaderData viewHeaderData;
+    private String totalCharge = "";
 
     @Getter
     @Setter
-    private ReserveForm reserveForm;
+    private ViewHeaderData viewHeaderData;
 
     public ReserveCompletedView() {
         super(TEMPLATE_NAME);
@@ -36,11 +34,7 @@ public class ReserveCompletedView extends AbstractOriginalView implements DummyV
 
     @Override
     public void initDummyData() {
-        this.reserveForm = new ReserveForm();
-        DummyUtils.setDefaultData(this.reserveForm);
         this.viewHeaderData = new ViewHeaderData();
-        this.reserveForm.setCustomerName("a");
-        this.reserveForm.setCustomerPhoneNumber("b");
 
     }
 }
