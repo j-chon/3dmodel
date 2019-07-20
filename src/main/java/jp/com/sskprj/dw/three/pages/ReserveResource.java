@@ -9,14 +9,17 @@ import jp.com.sskprj.dw.three.view.ReserveConfirmView;
 import jp.com.sskprj.dw.three.view.ReserveInputView;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.Serializable;
 import java.net.URI;
 
+@Slf4j
 @Path("/reserve/")
 @Produces(MediaType.TEXT_HTML)
 public class ReserveResource {
@@ -27,12 +30,18 @@ public class ReserveResource {
         this.reserveService = reserveService;
     }
 
-    //    @PermitAll
+    /**
+     * 入力画面
+     *
+     * @param serviceId 仮
+     * @param request   仮
+     * @return 画面のview
+     */
     @GET
     @Path("input")
     public ReserveInputView getInput(@QueryParam("serviceId") String serviceId, @Context HttpServletRequest request) {
 
-        System.out.println("URLは" + request.getPathInfo());
+        log.info("URL : {}", request.getPathInfo());
 
         ReserveInputView reserveInputView = new ReserveInputView(request);
         reserveInputView.initDummyData();
@@ -59,31 +68,35 @@ public class ReserveResource {
 
             ReserveEntity reserveEntity = reserveService.register(new ReserveEntity());
             String reserveId = reserveEntity.getReserveId();
-            URI uri = new URI("reserve/completed/" + reserveId + "/");
-            System.out.println("転送するー");
+            URI uri = new URI(String.format("reserve/completed/%s/", reserveId));
             SessionReserveResult sessionReserveResult = new SessionReserveResult();
             sessionReserveResult.setReserveId("xxxx011");
-            httpServletRequest.getSession().setAttribute("result", sessionReserveResult);
+
+            setSessionAttribute(httpServletRequest, sessionReserveResult);
+
             Response response = Response.seeOther(uri).build();
-            System.out.println("転送準備OK");
+            log.info("転送準備OK");
             return response;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("登録失敗", e);
             return null;
         }
     }
 
+    private void setSessionAttribute(@Context HttpServletRequest httpServletRequest,
+            Serializable sessionReserveResult) {
+        httpServletRequest.getSession().setAttribute("result", sessionReserveResult);
+    }
+
     /**
      * 完了後の状態を表示する画面。
-     * TODO セッションチェックを行って切れたら表示しないようにする。
      *
-     * @param reserveId
-     * @return
+     * @param reserveId 予約ID
+     * @return 予約完了画面View
      */
     @GET
     @Path("completed/{reserveId}/")
-    public ReserveCompletedView postCompleted(@PathParam("reserveId") String reserveId,
-            @Context HttpServletRequest httpServletRequest) {
+    public ReserveCompletedView postCompleted(@PathParam("reserveId") String reserveId, @Context HttpServletRequest httpServletRequest) {
 
         SessionReserveResult result = (SessionReserveResult) httpServletRequest.getSession().getAttribute("result");
         if (result == null) {
@@ -101,8 +114,6 @@ public class ReserveResource {
     @GET
     @Path("calendar/{targetMonth}/")
     public ReserveCalenderView getServiceCalendar(@PathParam("targetMonth") String targetMonth) {
-
-        long lngTargetMonth = Long.parseLong(targetMonth);
 
         ReserveCalenderView reserveCalenderView = new ReserveCalenderView();
         // TODO initDummy
