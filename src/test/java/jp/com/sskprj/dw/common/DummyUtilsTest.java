@@ -20,6 +20,8 @@ public class DummyUtilsTest {
         assertEquals("", "CustomerName", inputForm.getCustomerName());
         assertEquals("", "CustomerAddress", inputForm.getCustomerAddress());
         assertEquals("", new BigDecimal("99999999"), inputForm.getTotalCharge());
+        assertEquals("", "CustomerRequest", inputForm.getCustomerRequest());
+        assertEquals("", 0, inputForm.getIsMailMagazineReceive());
 
     }
 }

@@ -6,6 +6,8 @@ import jp.com.sskprj.dw.three.entity.db.ReserveSchedule;
 
 public class HibernateConfiguration {
 
+    private HibernateConfiguration() {
+    }
 
     /**
      * Entity追加時にここに追記する。

@@ -9,6 +9,9 @@ import javax.ws.rs.core.Response;
 
 public class ViewConfiguration {
 
+    private ViewConfiguration() {
+    }
+
 
     public static ExtendedExceptionMapper<WebApplicationException> createViewExceptionComponent() {
         return new ExtendedExceptionMapper<>() {

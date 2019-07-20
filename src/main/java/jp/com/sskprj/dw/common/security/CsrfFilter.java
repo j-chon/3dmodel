@@ -19,11 +19,11 @@ import java.util.UUID;
 public class CsrfFilter implements Filter {
 
     public static final String CSRF_TOKEN_KEY = "csrf_token";
-    private final ImmutableList EXCLUDED_TYPES = ImmutableList.of("application/json");
+    private static final ImmutableList EXCLUDED_TYPES = ImmutableList.of("application/json");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        // Do nothing ,this method is not used.
     }
 
     @Override
@@ -47,8 +47,8 @@ public class CsrfFilter implements Filter {
         if (request.getMethod().equalsIgnoreCase("POST") && !EXCLUDED_TYPES.contains(
                 request.getContentType())) {
 
-            String csrf_parameter_from_request = request.getParameter(CSRF_TOKEN_KEY);
-            boolean matches = Objects.equals(csrf_parameter_from_request, csrfTokenFromSession);
+            String csrfParameterFromRequest = request.getParameter(CSRF_TOKEN_KEY);
+            boolean matches = Objects.equals(csrfParameterFromRequest, csrfTokenFromSession);
             if (matches) {
                 log.info("許可 - {}", request.getPathInfo());
             } else {
@@ -63,6 +63,6 @@ public class CsrfFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        // Do nothing ,this method is not used.
     }
 }

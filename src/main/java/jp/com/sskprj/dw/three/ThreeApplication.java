@@ -28,6 +28,10 @@ import java.util.EnumSet;
 
 public class ThreeApplication extends Application<ThreeConfiguration> {
 
+    public static final String ASSETS_CSS = "/assets/css";
+    public static final String ASSETS_JS = "/assets/js";
+    public static final String ASSETS_IMAGE = "/assets/image";
+
     public static void main(String[] args) throws Exception {
         new ThreeApplication().run(args);
     }
@@ -37,15 +41,6 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
 
         final ReserveResource reserveResource = new ReserveResource(new ReserveService());
         final DummyPagesResource dummyPagesResource = new DummyPagesResource();
-
-        //
-        //        environment.jersey().register(new AbstractBinder() {
-        //            @Override
-        //            protected void configure() {
-        //                bindAsContract(ReserveService.class);
-        ////                bind(SampleServiceImpl.class).to(SampleService.class);
-        //            }
-        //        });
 
         environment.jersey().register(reserveResource);
         environment.jersey().register(dummyPagesResource);
@@ -77,11 +72,9 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
 
         bootstrap.addBundle(new ViewBundle<>());
         // クライアントテスト用
-        //        bootstrap.addBundle(new MultiPartBundle());
-
-        bootstrap.addBundle(new AssetsBundle("/assets/css", "/assets/css", null, "css"));
-        bootstrap.addBundle(new AssetsBundle("/assets/js", "/assets/js", null, "js"));
-        bootstrap.addBundle(new AssetsBundle("/assets/css", "/assets/image", null, "image"));
+        bootstrap.addBundle(new AssetsBundle(ASSETS_CSS, ASSETS_CSS, null, "css"));
+        bootstrap.addBundle(new AssetsBundle(ASSETS_JS, ASSETS_JS, null, "js"));
+        bootstrap.addBundle(new AssetsBundle(ASSETS_IMAGE, ASSETS_IMAGE, null, "image"));
 
         bootstrap.addBundle(new MigrationsBundle<>() {
             @Override

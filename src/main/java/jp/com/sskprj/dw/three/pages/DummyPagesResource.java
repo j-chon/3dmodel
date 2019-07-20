@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 public class DummyPagesResource {
 
     public DummyPagesResource() {
-
+        // Do nothing ,this method is not used.
     }
 
     @GET
