@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6a8b877-a7c3-4863-b602-56c5f1bd1d2d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/service/UserSessionPoolService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/security/CsrfFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/security/CsrfFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/SessionReserveResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/SessionReserveResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/ThreeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/ThreeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/pages/ReserveResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/pages/ReserveResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/service/entity/ReserveEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/service/entity/ReserveEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/ReserveCompletedView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/ReserveCompletedView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/ReserveConfirmView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/ReserveConfirmView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/parts/ReserveForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/parts/ReserveForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/css/BPRV.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/css/BPRV.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveCompleted.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveCompleted.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveConfirm.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveConfirm.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveInput.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveInput.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthenticator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthenticator2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthorizer.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -91,11 +80,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/pages/ReserveResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="67" column="62" selection-start-line="67" selection-start-column="58" selection-end-line="67" selection-end-column="62" />
+            <state relative-caret-position="126">
+              <caret line="61" column="48" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/security/CsrfFilter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="304">
-              <caret line="59" column="58" lean-forward="true" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
+              <caret line="56" column="58" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,7 +128,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/SessionReserveResult.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -143,7 +144,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveCompleted.ftl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="750">
-              <caret line="48" column="77" lean-forward="true" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+              <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -157,15 +158,6 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#742#743#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/ReserveConfirmView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
-              <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -366,38 +358,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="dw" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="security" type="462c0819:PsiDirectoryNode" />
-              <item name="CsrfFilter" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="UserSessionPoolService" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="session" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -440,148 +400,6 @@
               <item name="three" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="ReserveResource" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="ReserveEntity" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="ReserveService" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="parts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="parts" type="462c0819:PsiDirectoryNode" />
-              <item name="ReserveForm" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="ReserveCompletedView" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="ReserveConfirmView" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="dw" type="462c0819:PsiDirectoryNode" />
-              <item name="three" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="ReserveInputView" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="3dmodel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="3dmodel" type="b2602c69:ProjectViewProjectNode" />
@@ -899,7 +717,7 @@
       <workItem from="1563710860316" duration="4546000" />
       <workItem from="1563755295815" duration="1468000" />
       <workItem from="1563796088492" duration="5670000" />
-      <workItem from="1563839947362" duration="2343000" />
+      <workItem from="1563839947362" duration="3310000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit2">
       <created>1560912833867</created>
@@ -1020,7 +838,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563632016760</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="input～completeの処理を整理">
+      <created>1563843161568</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1563843161568</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1056,9 +881,9 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225867000" />
+    <option name="totallyTimeSpent" value="226834000" />
   </component>
-  <component name="TodoView">
+  <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -1069,7 +894,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="24" width="1381" height="895" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.50292397" side_tool="true" weight="0.2887377" />
       <window_info id="Designer" order="1" />
@@ -1080,7 +904,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49962208" weight="0.32941177" />
       <window_info anchor="bottom" id="Messages" order="2" sideWeight="0.4973545" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.84278154" visible="true" weight="0.44183007" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.84278154" visible="true" weight="0.27973858" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.4988662" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -1162,7 +986,8 @@
     <MESSAGE value="CSRFのフィルターがinputでかかるように修正。&#10;Auth関連のお試しクラスを追加" />
     <MESSAGE value="予約入力～予約完了までセッション、csrf対策管理完了。" />
     <MESSAGE value="Lint系のクリーンアップ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lint系のクリーンアップ" />
+    <MESSAGE value="input～completeの処理を整理" />
+    <option name="LAST_COMMIT_MESSAGE" value="input～completeの処理を整理" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1303,16 +1128,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthenticator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthenticator2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1324,23 +1139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthorizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-35">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1524,16 +1322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/SessionReserveResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/view/parts/ReserveForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -1558,7 +1346,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/security/CsrfFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
-          <caret line="59" column="58" lean-forward="true" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
+          <caret line="56" column="58" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1568,7 +1356,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/jp/com/sskprj/dw/three/view/reserveCompleted.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
-          <caret line="48" column="77" lean-forward="true" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
+          <caret line="48" column="77" selection-start-line="48" selection-start-column="77" selection-end-line="48" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -1596,10 +1384,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthenticator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionAuthorizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/three/pages/ReserveResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="67" column="62" selection-start-line="67" selection-start-column="58" selection-end-line="67" selection-end-column="62" />
+        <state relative-caret-position="126">
+          <caret line="61" column="48" selection-start-line="61" selection-start-column="48" selection-end-line="61" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/UserSessionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/jp/com/sskprj/dw/common/session/SessionReserveResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
