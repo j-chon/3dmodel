@@ -11,6 +11,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 import jp.com.sskprj.dw.common.security.CsrfFilter;
+import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.common.session.ExampleAuthenticator;
 import jp.com.sskprj.dw.common.session.ExampleAuthorizer;
 import jp.com.sskprj.dw.common.session.UserSessionBean;
@@ -46,8 +47,7 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
         environment.jersey().register(dummyPagesResource);
         environment.jersey().register(ViewConfiguration.createViewExceptionComponent());
         environment.servlets().setSessionHandler(new SessionHandler());
-        environment.servlets()
-                .addFilter("csrfFilter", new CsrfFilter())
+        environment.servlets().addFilter("csrfFilter", new CsrfFilter(new UserSessionPoolService()))
                 .addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, "/reserve/*");
         //        addBasicCredential(environment);
         // ヘルスチェック機能

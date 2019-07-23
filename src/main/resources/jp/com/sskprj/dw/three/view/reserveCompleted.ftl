@@ -37,10 +37,6 @@
                     ※まだ確定ではありません。
                 </p>
             </div>
-            <div class="rsvSalonNameWrap cFix">
-                <h2 class="rsvSalonName">${storeName}</h2>
-                <p class="fl">${storeName}</p>
-            </div>
         </div>
         <ol class="rsvStepList cFix">
             <li class="rslStep2 passive"><span>STEP2</span>日時を指定する</li>
@@ -48,7 +44,6 @@
             <li class="rslStep4 active "><span>STEP4</span>予約内容の確認</li>
             <li class="rslStepEnd ">予約完了</li>
         </ol>
-        <input type="hidden" name="storeId" value="${storeId}">
         <div class="yS reserveTitleOuter mT20">
             <h3 class="yS reserveTitleInner pL10 fw_bold">お客様情報の確認</h3>
             <label for="reserveId">予約番号</label><span id="reserveId">${reserveId}</span>

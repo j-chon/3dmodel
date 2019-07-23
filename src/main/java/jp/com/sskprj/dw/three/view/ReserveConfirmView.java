@@ -36,6 +36,14 @@ public class ReserveConfirmView extends AbstractOriginalView implements DummyVie
         super(TEMPLATE_NAME);
     }
 
+    public String getMailMagazineReceiveCheckStatus() {
+        if (this.reserveForm.getIsMailMagazineReceive() == 1) {
+            return "受け取る";
+        } else {
+            return "受け取らない";
+        }
+    }
+
     @Override
     public void initDummyData() {
         this.reserveForm = new ReserveForm();

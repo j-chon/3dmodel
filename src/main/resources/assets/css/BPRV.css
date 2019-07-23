@@ -24,11 +24,13 @@
 	overflow: hidden;
 	line-height: 26px;
 }
-.rsvSalonNameWrap {
+
+.rsvStoreNameWrap {
 	color: #665555;
 	padding: 15px 15px 10px;
 }
-.rsvSalonName {
+
+.rsvStoreName {
 	font-size: 18px;
 	font-weight: bold;
 }

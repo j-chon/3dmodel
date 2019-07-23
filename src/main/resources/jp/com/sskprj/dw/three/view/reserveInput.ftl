@@ -36,8 +36,8 @@
                     ※即時予約は、予約完了時点で予約が確定します。そのままご来店ください。
                 </p>
             </div>
-            <div class="rsvSalonNameWrap cFix">
-                <h2 class="rsvSalonName">${storeName}</h2>
+            <div class="rsvStoreNameWrap cFix">
+                <h2 class="rsvStoreName">${storeName}</h2>
                 <p class="fl">${storeName}</p>
             </div>
         </div>
@@ -60,7 +60,20 @@
                         <div class="dibBL vaM w105">ご予約者氏名</div>
                     </th>
                     <td class="vaThT">
-                        <input type="text" maxlength="30" value="${reserveForm.customerName}" name="cast_name"
+                        <input type="text" maxlength="30" value="${reserveForm.customerName}" name="cst_name"
+                               class="tfFR w110 imeOff">
+                    </td>
+                </tr>
+                <tr>
+                    <th class="w170 bgLGray fw_bold">
+                        <div class="dibBL vaM w105">ご予約者住所</div>
+                    </th>
+                    <td class="vaThT">
+                        <input type="text" maxlength="7" value="" name="cst_post_num"
+                               class="tfFR w110 imeOff">
+                        <input type="text" maxlength="200" value="" name="cst_address"
+                               class="tfFR w110 imeOff">
+                        <input type="text" maxlength="200" value="" name="cst_address_01"
                                class="tfFR w110 imeOff">
                     </td>
                 </tr>
@@ -72,10 +85,11 @@
                     </th>
                     <td class="vaThT">
                         <div class="mT5">
-                            <input type="text" name="cast_phone_num" value="${reserveForm.customerPhoneNumber}"
+                            <input type="text" name="cst_phone_num" value="${reserveForm.customerPhoneNumber}"
                                    maxlength="17" class="tfFR w110 imeOff">
                             <span class="mL5">（例）030000000</span>
                             <p class="fs10 mT2">※入力された電話番号は会員情報に反映されます。</p>
+
                         </div>
                     </td>
                 </tr>
@@ -95,7 +109,7 @@
                     <td class="lh18">
                         <div class="dibBL vaM w150">
                             <input type="checkbox" name="is_mail_magazine_rcv"
-                                   value="${reserveForm.isMailMagazineReceive}"
+                                   value="1"
                                    checked="checked" class="cbF">
                             <label for="forRsvcmReceive">受け取る</label>
                         </div>
@@ -107,196 +121,19 @@
                 </tbody>
             </table>
 
-            <div class="yS reserveTitleOuter mT20">
-                <h3 class="yS reserveTitleInner pL10 fw_bold">店舗からお客様への確認事項</h3>
-            </div>
-            <table cellspacing="0" class="wFull bdCell mT10">
-                <tbody>
-                <tr>
-                    <th class="w170 bgLGray3">
-                        <div class="dibBL vaM fw_normal iconMust mR10">必須</div>
-                        <div class="dibBL vaM w105">ご来店に際しての<br>注意事項</div>
-                    </th>
-                </tr>
-                </tbody>
-            </table>
-            <div class="mT20">
-                <a href="javascript: void(0);" class="moreDetailRequestInput" id="jsiMoreDetailRequestInput">
-                    <span class="moreDetailRequestInputText iS arrowR"
-                          id="jsiMoreDetailRequestInputText">詳細要望を入力する（任意）</span>
-                    <span class="fgGray"
-                          id="jsiMoreDetailRequestInputSubText">（スタイリストに関する要望・スタイリストへのご相談・なりたいイメージなど）</span>
-                </a>
-            </div>
-
-            <div class="moreDetailRequestInputArea" id="jsiMoreDetailRequestInputArea">
-                <div class="moreDetailRequestInputAreaInner" id="jsiMoreDetailRequestInputAreaInner">
-                    <div class="yS reserveTitleOuter mT15">
-                        <h3 class="yS reserveTitleInner pL10 fw_bold">より詳しいご要望がある場合はこちらからご入力ください</h3>
-                    </div>
-
-                    <table cellspacing="0" class="wFull bdCell  mT10">
-                        <tbody>
-                        <tr>
-                            <th colspan="2" class="w160 bgLGray3 fw_bold">スタイリストに関するご希望</th>
-                        </tr>
-                        <tr>
-                            <th class="w170 bgLGray fw_bold">カウンセリングで知りたい<br>こと</th>
-                            <td class="lh18">
-                                <ul class="cFix">
-                                    <li class="fl w205 nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="1"
-                                               id="forMyStyleToSuit" class="cbF">
-                                        <label for="forMyStyleToSuit">自分に似合うスタイルについて</label>
-                                    </li>
-                                    <li class="nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="2"
-                                               id="forEverydayStyling" class="cbF">
-                                        <label for="forEverydayStyling">普段のスタイリングについて</label>
-                                    </li>
-                                    <li class="fl w205 nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="4"
-                                               id="arrangeForStyle" class="cbF">
-                                        <label for="arrangeForStyle">スタイルのアレンジについて</label>
-                                    </li>
-                                    <li class="nowrap">
-                                        <input type="checkbox" name="rsvDemandCounselingCd" value="8"
-                                               id="otherFeaturedMenu" class="cbF">
-                                        <label for="otherFeaturedMenu">その他おすすめのメニュー（トリートメントなど）について</label>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="w170 bgLGray fw_bold">接客へのご要望</th>
-                            <td class="vaM lh18">
-                                <ul class="cFix">
-                                    <li class="fl mR10 nowrap">
-                                        <input type="radio" name="rsvDemandServiceCd" value="1" id="funToTalk"
-                                               class="cbF"><label for="funToTalk">なるべく楽しく話したい</label>
-                                    </li>
-                                    <li class="fl mR10 nowrap">
-                                        <input type="radio" name="rsvDemandServiceCd" value="2" id="quietly"
-                                               class="cbF"><label for="quietly">なるべく静かに過ごしたい</label>
-                                    </li>
-                                    <li class="fl mR10 nowrap">
-                                        <input type="radio" name="rsvDemandServiceCd" value="0" id="notCareService"
-                                               class="cbF">
-                                        <label for="notCareService">特にこだわらない</label>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <table cellspacing="0" class="wFull bdCell  mT10">
-                        <tbody>
-                        <tr>
-                            <th class="bgLGray3 fw_bold">ご要望・ご相談</th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <textarea name="rsvDemandAskDetail" cols="141" rows="3" id="rsvDemandAskDetail"
-                                              class="taF w730 h55 imeOn" style="color: rgb(204, 204, 204);"></textarea>
-                                </div>
-                                <p>（全角200文字以内）</p>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <table cellspacing="0" class="wFull bdCell  mT10">
-                        <tbody>
-                        <tr>
-                            <th colspan="2" class="w160 bgLGray3 fw_bold">なりたいイメージ</th>
-                        </tr>
-                        <tr>
-                            <th class="w170 bgLGray fw_bold">なりたいイメージ</th>
-                            <td class="vaM lh23 cFix">
-                                <input type="text" value="${reserveForm.textHairImage}"/>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-
             <table cellspacing="0" class="wFull bdCell  mT10">
                 <tbody>
                 <tr>
-                </tr>
-                <tr>
                     <th class="w170 bgLGray fw_bold">合計金額</th>
                     <td class="lh18" colspan="2">
-                        <div class="dibBL vaM w150">¥<span id="rsvTotalPrice">${reserveForm.totalCharge}</span></div>
+                        <div class="dibBL vaM w150">¥<input type="number" name="total_charge" value="0"></div>
                         <div class="fgOrange dibBL vaM fs10 pL1e txt1e">※端数は切り下げです。</div>
-                    </td>
-                </tr>
-
-                <tr>
-                </tr>
-
-                <tr>
-                </tr>
-                <tr>
-                    <th class="w170 bgLGray fw_bold">お支払い予定金額<br><span class="fw_normal">（合計金額 - ご利用ポイント分）</span></th>
-                    <td class="lh18" colspan="2">
-                        <div class="dibBL vaM w150">
-                            <span class="fw_bold" id="paymentAmount">¥12,960</span></div>
-                        <div class="fgOrange dibBL vaM fs10">
-                            <p class="pL1e txt1e">※予約時の選択メニューや、来店時のメニュー変更により、実際の支払い金額と異なる場合があります。</p>
-                            <p class="pL1e txt1e">
-                                ※2019年10月1日以降のご来店予定の場合、消費税率引上げに伴う料金改定により消費税の差額分、記載料金より高くなる場合があります。</p>
-                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
-
-
-            <p class="pV10">※メルマガの購読を希望されない方はページ下部の「メルマガ配信」をご確認下さい</p>
-            <div class="submitArea2 pr">
-                <div>
-                    <input type="submit" name="confirm" value="予約内容を確認する" class="bS confirmL db offL mHA pointerCursor"
-                           title="予約内容を確認する"></div>
-            </div>
-
-            <div class="mT30">
-                <dl class="mmSettingBox" id="jsiMmSettingBox" style="border-radius: 6px;">
-                    <dt class="mmSettingHeadline">メールマガジン受信設定</dt>
-                    <dd class="mmSettingBody">
-                        <div class="mmSettingBodyNotes pClear">
-                            <p class="fs11">入力された会員ID（メールアドレス）に会員様限定のお知らせメールをお送りいたします。<br>配信を希望されない場合は、チェックをお外しください。</p>
-                        </div>
-                    </dd>
-                    <dd class="mmSettingBody cFix">
-                        <p>最新情報をお届けします。</p>
-                        <p class="fl mR30">
-                            <input type="checkbox" name="mailmagazineType" value="1"
-                                   id="forMailmagazineType" class="cbF"><label for="forMailmagazineType">メルマガ</label>
-                        </p>
-                    </dd>
-                    <dd class="mmSettingBody cFix">
-                        <p class="fl mR30">
-                            <input type="checkbox" name="capMlMagznDeliKbn" value="H"
-                                   id="forCapMlMagznDeliKbn" class="cbF"><label
-                                    for="forCapMlMagznDeliKbn">おしらせ</label></p>
-                        <p class="fl"><a href="/" target="_blank">詳細はこちら</a>
-                        </p>
-                    </dd>
-                </dl>
-            </div>
-            <input type="hidden" name="rsvStyleStyleId" value="">
-            <input type="hidden" name="rsvStyleStyleName" value="">
-            <input type="hidden" name="rsvStyleStyleFilename" value="">
-            <input type="hidden" name="flgDetail" value="" id="flgDetail">
             <input type="submit" value="確認画面へ"/>
         </form>
-        <div class="mT10">
-            <a href="/reserve/000376765"
-               title="戻る" class="btnCssWhite dib w100 pV8">戻る</a>
-        </div>
 
     </div>
     <!-- ↑contents -->
@@ -304,7 +141,7 @@
     <div id="reserveFooter">
         <div id="copyrightnew">
             <a href="" target="_blank"><img
-                        src="./お客様情報入力_files/footercopyright.gif" alt="(C)"></a>
+                        src="/assets/image/footercopyright.gif" alt="(C)"></a>
         </div>
         <ul id="footerLinks">
             <li><a href="javascript:void(0);" id="mterms">ID・会員規約</a></li>

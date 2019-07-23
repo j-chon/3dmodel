@@ -4,17 +4,11 @@ import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 public class ReserveCompletedView extends AbstractOriginalView implements DummyViewInterface {
 
     private static final String TEMPLATE_NAME = "reserveCompleted.ftl";
-
-    @Getter
-    @Setter
-    private String storeName = "";
-
-    @Getter
-    @Setter
-    private String storeId = "";
 
     @Getter
     @Setter
@@ -22,11 +16,11 @@ public class ReserveCompletedView extends AbstractOriginalView implements DummyV
 
     @Getter
     @Setter
-    private String totalCharge = "";
+    private BigDecimal totalCharge = BigDecimal.ZERO;
 
     @Getter
     @Setter
-    private ViewHeaderData viewHeaderData;
+    private ViewHeaderData viewHeaderData = new ViewHeaderData();
 
     public ReserveCompletedView() {
         super(TEMPLATE_NAME);
@@ -34,7 +28,6 @@ public class ReserveCompletedView extends AbstractOriginalView implements DummyV
 
     @Override
     public void initDummyData() {
-        this.viewHeaderData = new ViewHeaderData();
-
+        this.viewHeaderData.setTitle("ダミーデータ");
     }
 }

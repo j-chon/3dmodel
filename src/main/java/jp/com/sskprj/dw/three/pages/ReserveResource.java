@@ -10,6 +10,7 @@ import jp.com.sskprj.dw.three.view.ReserveInputView;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -17,6 +18,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
 @Slf4j
@@ -52,25 +54,51 @@ public class ReserveResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("confirm/")
-    public ReserveConfirmView postConfirm(@BeanParam ReserveForm form) {
+    public ReserveConfirmView postConfirm(@BeanParam ReserveForm form, @Context HttpServletRequest httpServletRequest) {
 
         ReserveConfirmView reserveConfirmView = new ReserveConfirmView();
-        reserveConfirmView.initDummyData();
+        reserveConfirmView.setViewHeaderData(new ViewHeaderData());
+        reserveConfirmView.getViewHeaderData().setTitle("予約確認画面");
+        reserveConfirmView.setReserveForm(form);
         reserveConfirmView.setCsrfToken(form.getToken());
+
+        SessionReserveResult sessionReserveResult = new SessionReserveResult();
+
+        try {
+            BeanUtils.copyProperties(sessionReserveResult, form);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        setSessionAttribute(httpServletRequest, sessionReserveResult);
+
+        log.info("入力内容 : {}", form);
         return reserveConfirmView;
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Path("complete/")
-    public Response postComplete(@BeanParam ReserveForm form, @Context HttpServletRequest httpServletRequest) {
+    public Response postComplete(@Context HttpServletRequest httpServletRequest) {
         try {
 
-            ReserveEntity reserveEntity = reserveService.register(new ReserveEntity());
-            String reserveId = reserveEntity.getReserveId();
-            URI uri = new URI(String.format("reserve/completed/%s/", reserveId));
+            SessionReserveResult result = (SessionReserveResult) httpServletRequest.getSession().getAttribute("result");
+            String newReserveId = calcNewReserveId();
+
+            ReserveEntity reserveEntity = new ReserveEntity(newReserveId);
+            BeanUtils.copyProperties(reserveEntity, result);
+
+            log.info("登録する内容{}", reserveEntity);
+
+            reserveService.register(reserveEntity);
+
+            URI uri = new URI(String.format("reserve/completed/"));
+
             SessionReserveResult sessionReserveResult = new SessionReserveResult();
-            sessionReserveResult.setReserveId("xxxx011");
+
+            // セッションに移し替え
+            BeanUtils.copyProperties(sessionReserveResult, reserveEntity);
 
             setSessionAttribute(httpServletRequest, sessionReserveResult);
 
@@ -83,31 +111,36 @@ public class ReserveResource {
         }
     }
 
-    private void setSessionAttribute(@Context HttpServletRequest httpServletRequest,
+    private String calcNewReserveId() {
+        return "TEST";
+    }
+
+    private void setSessionAttribute(HttpServletRequest httpServletRequest,
             Serializable sessionReserveResult) {
         httpServletRequest.getSession().setAttribute("result", sessionReserveResult);
+        log.info("セッションに設定{}", sessionReserveResult);
     }
 
     /**
      * 完了後の状態を表示する画面。
      *
-     * @param reserveId 予約ID
      * @return 予約完了画面View
      */
     @GET
-    @Path("completed/{reserveId}/")
-    public ReserveCompletedView postCompleted(@PathParam("reserveId") String reserveId, @Context HttpServletRequest httpServletRequest) {
+    @Path("completed/")
+    public ReserveCompletedView postCompleted(@Context HttpServletRequest httpServletRequest) {
 
         SessionReserveResult result = (SessionReserveResult) httpServletRequest.getSession().getAttribute("result");
         if (result == null) {
             throw new WebApplicationException("セッションが切断されました。", Response.Status.BAD_REQUEST);
         }
+        log.info("予約結果{}", result);
 
         ReserveCompletedView reserveCompletedView = new ReserveCompletedView();
         reserveCompletedView.setViewHeaderData(new ViewHeaderData());
+        reserveCompletedView.getViewHeaderData().setTitle("予約完了画面");
         reserveCompletedView.setReserveId(result.getReserveId());
-        reserveCompletedView.setStoreName("testStoreName");
-        reserveCompletedView.setTotalCharge("\\999,0000");
+        reserveCompletedView.setTotalCharge(result.getTotalCharge());
         return reserveCompletedView;
     }
 
