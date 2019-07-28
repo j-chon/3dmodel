@@ -1,5 +1,8 @@
 package jp.com.sskprj.dw.three.pages;
 
+import jp.com.sskprj.dw.common.security.CsrfMethodFilter;
+import jp.com.sskprj.dw.common.security.RequestUtils;
+import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.common.session.SessionReserveResult;
 import jp.com.sskprj.dw.three.service.ReserveService;
 import jp.com.sskprj.dw.three.service.entity.ReserveEntity;
@@ -9,28 +12,32 @@ import jp.com.sskprj.dw.three.view.ReserveConfirmView;
 import jp.com.sskprj.dw.three.view.ReserveInputView;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.BeanUtils;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 
 @Slf4j
 @Path("/reserve/")
 @Produces(MediaType.TEXT_HTML)
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReserveResource {
 
-    private ReserveService reserveService;
+    @Inject
+    private UserSessionPoolService userSessionPoolService;
 
-    public ReserveResource(ReserveService reserveService) {
-        this.reserveService = reserveService;
-    }
+    @Inject
+    private ReserveService reserveService;
 
     /**
      * 入力画面
@@ -43,9 +50,11 @@ public class ReserveResource {
     @Path("input")
     public ReserveInputView getInput(@QueryParam("serviceId") String serviceId, @Context HttpServletRequest request) {
 
+        CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve", request);
+        csrfFilter.start();
         log.info("URL : {}", request.getPathInfo());
 
-        ReserveInputView reserveInputView = new ReserveInputView(request);
+        ReserveInputView reserveInputView = new ReserveInputView(csrfFilter.getCurrentToken());
         reserveInputView.initDummyData();
 
         return reserveInputView;
@@ -56,11 +65,14 @@ public class ReserveResource {
     @Path("confirm/")
     public ReserveConfirmView postConfirm(@BeanParam ReserveForm form, @Context HttpServletRequest httpServletRequest) {
 
+        CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve", httpServletRequest);
+        csrfFilter.process(form.getToken());
+
         ReserveConfirmView reserveConfirmView = new ReserveConfirmView();
         reserveConfirmView.setViewHeaderData(new ViewHeaderData());
         reserveConfirmView.getViewHeaderData().setTitle("予約確認画面");
         reserveConfirmView.setReserveForm(form);
-        reserveConfirmView.setCsrfToken(form.getToken());
+        reserveConfirmView.setCsrfToken(csrfFilter.getCurrentToken());
 
         SessionReserveResult sessionReserveResult = new SessionReserveResult();
 
@@ -71,7 +83,7 @@ public class ReserveResource {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        setSessionAttribute(httpServletRequest, sessionReserveResult);
+        RequestUtils.setSessionAttribute(httpServletRequest, "result", sessionReserveResult);
 
         log.info("入力内容 : {}", form);
         return reserveConfirmView;
@@ -95,14 +107,21 @@ public class ReserveResource {
 
             URI uri = new URI(String.format("reserve/completed/"));
 
+            // セッションに設定する為のDTO
             SessionReserveResult sessionReserveResult = new SessionReserveResult();
 
             // セッションに移し替え
             BeanUtils.copyProperties(sessionReserveResult, reserveEntity);
 
-            setSessionAttribute(httpServletRequest, sessionReserveResult);
+            // セッション情報に登録情報を設定する。
+            RequestUtils.setSessionAttribute(httpServletRequest, "result", sessionReserveResult);
 
             Response response = Response.seeOther(uri).build();
+
+            // CSRFトークンを破棄する。
+            CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve", httpServletRequest);
+            csrfFilter.close();
+
             log.info("転送準備OK");
             return response;
         } catch (Exception e) {
@@ -113,12 +132,6 @@ public class ReserveResource {
 
     private String calcNewReserveId() {
         return "TEST";
-    }
-
-    private void setSessionAttribute(HttpServletRequest httpServletRequest,
-            Serializable sessionReserveResult) {
-        httpServletRequest.getSession().setAttribute("result", sessionReserveResult);
-        log.info("セッションに設定{}", sessionReserveResult);
     }
 
     /**
@@ -141,6 +154,8 @@ public class ReserveResource {
         reserveCompletedView.getViewHeaderData().setTitle("予約完了画面");
         reserveCompletedView.setReserveId(result.getReserveId());
         reserveCompletedView.setTotalCharge(result.getTotalCharge());
+        reserveCompletedView.setCustomerName(result.getCustomerName());
+        reserveCompletedView.setCustomerAddress01(result.getCustomerAddress());
         return reserveCompletedView;
     }
 

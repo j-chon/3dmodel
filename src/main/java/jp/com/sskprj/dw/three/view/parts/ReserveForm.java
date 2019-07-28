@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Data
 public class ReserveForm {
 
-    @FormParam("csrf_token")
+    @FormParam("csrf_token_reserve")
     private String token = "";
 
     @FormParam("cst_name")

@@ -1,12 +1,9 @@
 package jp.com.sskprj.dw.three.view;
 
-import jp.com.sskprj.dw.common.security.CsrfFilter;
 import jp.com.sskprj.dw.three.view.parts.ReserveForm;
 import jp.com.sskprj.dw.three.view.parts.ViewHeaderData;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.servlet.http.HttpServletRequest;
 
 public class ReserveInputView extends AbstractOriginalView implements DummyViewInterface {
 
@@ -16,19 +13,17 @@ public class ReserveInputView extends AbstractOriginalView implements DummyViewI
     @Setter
     protected String csrfToken;
 
-
     @Getter
     @Setter
     private ViewHeaderData viewHeaderData;
 
     @Getter
     @Setter
-    private String storeName="";
+    private String storeName = "";
 
     @Getter
     @Setter
-    private String storeId="";
-
+    private String storeId = "";
 
     @Getter
     @Setter
@@ -38,9 +33,9 @@ public class ReserveInputView extends AbstractOriginalView implements DummyViewI
         super(TEMPLATE_NAME);
     }
 
-    public ReserveInputView(HttpServletRequest request) {
+    public ReserveInputView(String csrfToken) {
         super(TEMPLATE_NAME);
-        this.csrfToken = (String) request.getSession().getAttribute(CsrfFilter.CSRF_TOKEN_KEY);
+        this.csrfToken = csrfToken;
     }
 
     @Override

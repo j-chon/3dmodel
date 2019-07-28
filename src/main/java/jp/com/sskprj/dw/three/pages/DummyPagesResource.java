@@ -1,8 +1,10 @@
 package jp.com.sskprj.dw.three.pages;
 
 import jp.com.sskprj.dw.common.DummyUtils;
+import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.three.view.*;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -12,6 +14,9 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.TEXT_HTML)
 
 public class DummyPagesResource {
+
+    @Inject
+    UserSessionPoolService userSessionPoolService;
 
     public DummyPagesResource() {
         // Do nothing ,this method is not used.
@@ -26,6 +31,7 @@ public class DummyPagesResource {
     @GET
     @Path("reserveInput")
     public DummyViewInterface getReserve01() {
+        userSessionPoolService.createCsrfToken();
         return DummyUtils.getDummyView(new ReserveInputView());
     }
 

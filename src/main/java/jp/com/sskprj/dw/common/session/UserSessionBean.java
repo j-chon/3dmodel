@@ -1,34 +1,26 @@
 package jp.com.sskprj.dw.common.session;
 
-import org.apache.commons.lang3.StringUtils;
+import lombok.Getter;
 
 import java.security.Principal;
+import java.util.Set;
 
 public class UserSessionBean implements Principal {
 
-    private String name;
+    @Getter
+    private final String name;
+
+    @Getter
+    private final Set<String> roles;
 
     public UserSessionBean(String name) {
         this.name = name;
+        this.roles = null;
     }
 
-    @Override
-    public boolean equals(Object another) {
-        return StringUtils.equals(this.toString(), another.toString());
+    public UserSessionBean(String name, Set<String> roles) {
+        this.name = name;
+        this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return null;
-    }
-
-    @Override
-    public int hashCode() {
-        return 0;
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
 }

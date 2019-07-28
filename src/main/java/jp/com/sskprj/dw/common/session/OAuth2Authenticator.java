@@ -2,12 +2,13 @@ package jp.com.sskprj.dw.common.session;
 
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
-import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.util.Sets;
 
 import java.util.*;
 
-public class ExampleAuthenticator implements Authenticator<BasicCredentials, UserSessionBean> {
+public class OAuth2Authenticator implements Authenticator<String, UserSessionBean> {
+
+
 
     /**
      * Valid users with mapping user -> roles
@@ -23,11 +24,10 @@ public class ExampleAuthenticator implements Authenticator<BasicCredentials, Use
     }
 
     @Override
-    public Optional<UserSessionBean> authenticate(BasicCredentials credentials) throws AuthenticationException {
-        if (VALID_USERS.containsKey(credentials.getUsername()) && "secret".equals(credentials.getPassword())) {
-            return Optional.of(new UserSessionBean("aaa"));
-        }
-        return Optional.empty();
+    public Optional<UserSessionBean> authenticate(String credentials) throws AuthenticationException {
+
+        UserSessionBean userSessionBean = new UserSessionBean(credentials);
+        return Optional.of(userSessionBean);
     }
 
 }

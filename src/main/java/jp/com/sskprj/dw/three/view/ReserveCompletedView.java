@@ -16,6 +16,28 @@ public class ReserveCompletedView extends AbstractOriginalView implements DummyV
 
     @Getter
     @Setter
+    private String customerName = "";
+
+    @Getter
+    @Setter
+    private String customerPhoneNumber = "";
+
+    @Getter
+    @Setter
+    private String customerPostNumber = "";
+
+    @Getter
+    @Setter
+    private String customerAddress = "";
+
+    @Getter
+    @Setter
+    private String customerAddress01 = "";
+
+
+
+    @Getter
+    @Setter
     private BigDecimal totalCharge = BigDecimal.ZERO;
 
     @Getter
