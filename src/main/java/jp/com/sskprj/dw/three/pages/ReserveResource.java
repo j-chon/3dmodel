@@ -2,6 +2,7 @@ package jp.com.sskprj.dw.three.pages;
 
 import jp.com.sskprj.dw.common.security.CsrfMethodFilter;
 import jp.com.sskprj.dw.common.security.RequestUtils;
+import jp.com.sskprj.dw.common.service.UniqueIdService;
 import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.common.session.SessionReserveResult;
 import jp.com.sskprj.dw.three.service.ReserveService;
@@ -38,6 +39,9 @@ public class ReserveResource {
 
     @Inject
     private ReserveService reserveService;
+
+    @Inject
+    private UniqueIdService uniqueIdService;
 
     /**
      * 入力画面
@@ -96,7 +100,7 @@ public class ReserveResource {
         try {
 
             SessionReserveResult result = (SessionReserveResult) httpServletRequest.getSession().getAttribute("result");
-            String newReserveId = calcNewReserveId();
+            String newReserveId = uniqueIdService.createReserveId();
 
             ReserveEntity reserveEntity = new ReserveEntity(newReserveId);
             BeanUtils.copyProperties(reserveEntity, result);
@@ -130,10 +134,6 @@ public class ReserveResource {
         }
     }
 
-    private String calcNewReserveId() {
-        return "TEST";
-    }
-
     /**
      * 完了後の状態を表示する画面。
      *
@@ -155,7 +155,7 @@ public class ReserveResource {
         reserveCompletedView.setReserveId(result.getReserveId());
         reserveCompletedView.setTotalCharge(result.getTotalCharge());
         reserveCompletedView.setCustomerName(result.getCustomerName());
-        reserveCompletedView.setCustomerAddress01(result.getCustomerAddress());
+        reserveCompletedView.setCustomerAddress(result.getCustomerAddress());
         return reserveCompletedView;
     }
 

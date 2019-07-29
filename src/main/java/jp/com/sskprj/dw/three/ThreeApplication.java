@@ -11,6 +11,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 import jp.com.sskprj.dw.common.provider.OriginalProvider;
+import jp.com.sskprj.dw.common.service.UniqueIdService;
 import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.common.session.OAuth2Authenticator;
 import jp.com.sskprj.dw.common.session.OAuth2Authorizer;
@@ -50,6 +51,7 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
             protected void configure() {
                 bind(UserSessionPoolService.class).to(UserSessionPoolService.class);
                 bind(ReserveService.class).to(ReserveService.class);
+                bind(UniqueIdService.class).to(UniqueIdService.class);
             }
         });
 
