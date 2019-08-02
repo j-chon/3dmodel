@@ -20,6 +20,7 @@ import jp.com.sskprj.dw.three.config.ThreeConfiguration;
 import jp.com.sskprj.dw.three.config.ViewConfiguration;
 import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
 import jp.com.sskprj.dw.three.pages.DummyPagesResource;
+import jp.com.sskprj.dw.three.pages.LoginResource;
 import jp.com.sskprj.dw.three.pages.ReserveResource;
 import jp.com.sskprj.dw.three.service.ReserveService;
 import org.eclipse.jetty.server.session.SessionHandler;
@@ -40,12 +41,11 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     @Override
     public void run(ThreeConfiguration configuration, Environment environment) throws Exception {
 
-        final ReserveResource reserveResource = new ReserveResource();
-        final DummyPagesResource dummyPagesResource = new DummyPagesResource();
 
         // リソース登録
         environment.jersey().register(ReserveResource.class);
         environment.jersey().register(DummyPagesResource.class);
+        environment.jersey().register(LoginResource.class);
         environment.jersey().register(new AbstractBinder() {
             @Override
             protected void configure() {
