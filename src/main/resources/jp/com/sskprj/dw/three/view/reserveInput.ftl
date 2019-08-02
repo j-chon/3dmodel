@@ -29,7 +29,7 @@
     <div class="w_break_all mT5"></div>
     <!-- ↓contents -->
     <div id="reserveContents">
-        <div class="reserveHeader">
+        <div class="commonHeader">
             <div class="cFix">
                 <span class="rsvType">即時予約</span>
                 <p class="rsvTypeLead">

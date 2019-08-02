@@ -30,7 +30,7 @@
     </div><!-- ↓contents -->
     <div id="reserveContents">
 
-        <div class="reserveHeader">
+        <div class="commonHeader">
             <div class="cFix">
                 <span class="rsvType">仮予約</span>
                 <p class="rsvTypeLead">

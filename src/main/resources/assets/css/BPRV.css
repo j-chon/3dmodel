@@ -4,8 +4,7 @@
  * CLASSES（コンポーネント）
  ************************************************************/
 
-/* salonHeader */
-.reserveHeader {
+.commonHeader {
 	background-color: #F4F4F4;
 }
 .rsvType {
