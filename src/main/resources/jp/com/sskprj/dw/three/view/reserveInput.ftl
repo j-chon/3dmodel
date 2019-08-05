@@ -8,11 +8,10 @@
     <title>お客様情報入力</title>
     <link rel="canonical" href="">
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="/assets/css/BPRV.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/global.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/reserve2.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/reserve.css" rel="stylesheet" type="text/css">
 </head>
-<body id="pageTop" style="">
+<body id="pageTop">
 <!-- ↓header -->
 <div id="reserveHeaderWrapper">
     <div id="header">

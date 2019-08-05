@@ -8,7 +8,7 @@
     <title>${viewHeaderData.title}</title>
     <link rel="canonical" href="">
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="/assets/css/BPRV.css" rel="stylesheet" type="text/css">
+    <link href="/assets/css/reserve.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/global.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
 </head>

@@ -15,9 +15,6 @@ public class LoginResource {
         // Do nothing ,this method is not used.
     }
 
-    // TODO jsが読み込めてないのでそこら辺を整理
-    // https://firebase.google.com/docs/auth/web/google-signin?authuser=0
-    // https://github.com/firebase/quickstart-js
     @GET
     @Path("")
     public LoginView getIndex() {

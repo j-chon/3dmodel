@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<#-- @ftlvariable name="" type="jp.com.sskprj.dw.three.view.LoginView" -->
+<#-- @ftlvariable name="" typle="jp.com.sskprj.dw.three.view.LoginView" -->
 <html lang="ja">
 <head>
     <meta charset=utf-8/>
