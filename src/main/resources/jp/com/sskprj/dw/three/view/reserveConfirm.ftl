@@ -9,8 +9,6 @@
     <link rel="canonical" href="">
     <link rel="shortcut icon" href="favicon.ico">
     <link href="/assets/css/reserve.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/global.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
 </head>
 <body id="pageTop">
 <!-- ↓header -->
@@ -49,7 +47,7 @@
             <div class="yS reserveTitleOuter mT20">
                 <h3 class="yS reserveTitleInner pL10 fw_bold">お客様情報の確認</h3>
             </div>
-            <table cellspacing="0" class="wFull bdCell  mT10">
+            <table class="wFull bdCell  mT10">
                 <tbody>
                 <tr>
                     <th class="w170 bgLGray fw_bold">
@@ -90,7 +88,7 @@
                 </tbody>
             </table>
 
-            <table cellspacing="0" class="wFull bdCell  mT10">
+            <table class="wFull bdCell  mT10">
                 <tbody>
                 <tr>
                     <th class="w170 bgLGray fw_bold">合計金額</th>
@@ -105,8 +103,7 @@
             <input type="submit" value="登録する"/>
         </form>
         <div class="mT10">
-            <a href="/reserve/input/"
-               title="戻る" class="btnCssWhite dib w100 pV8">戻る</a>
+            <a href="/reserve/input/" title="戻る" class="btnCssWhite dib w100 pV8">戻る</a>
         </div>
 
     </div>
@@ -115,14 +112,15 @@
     <div id="reserveFooter">
         <div id="copyrightnew">
             <a href="" target="_blank"><img
-                        src="./お客様情報入力_files/footercopyright.gif" alt="(C)"></a>
+                        src="/assets/image/footercopyright.gif" alt="(C)"></a>
         </div>
         <ul id="footerLinks">
-            <li><a href="javascript:void(0);" id="mterms">ID・会員規約</a></li>
+            <li><a href="javascript:void(0);" id="memberTerms">ID・会員規約</a></li>
             <li><a href="javascript:void(0);" id="terms">利用規約</a></li>
             <li><a href="javascript:void(0);" id="privacy">プライバシーポリシー</a></li>
             <li><a href="javascript:void(0);" id="guide">ご利用ガイド</a></li>
         </ul>
     </div>
 </div>
+</body>
 </html>

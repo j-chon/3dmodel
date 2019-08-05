@@ -143,11 +143,12 @@
                         src="/assets/image/footercopyright.gif" alt="(C)"></a>
         </div>
         <ul id="footerLinks">
-            <li><a href="javascript:void(0);" id="mterms">ID・会員規約</a></li>
+            <li><a href="javascript:void(0);" id="memberTerms">ID・会員規約</a></li>
             <li><a href="javascript:void(0);" id="terms">利用規約</a></li>
             <li><a href="javascript:void(0);" id="privacy">プライバシーポリシー</a></li>
             <li><a href="javascript:void(0);" id="guide">ご利用ガイド</a></li>
         </ul>
     </div>
 </div>
+</body>
 </html>

@@ -9,8 +9,6 @@
     <link rel="canonical" href="">
     <link rel="shortcut icon" href="favicon.ico">
     <link href="/assets/css/reserve.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/global.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/common.css" rel="stylesheet" type="text/css">
 </head>
 <body id="pageTop">
 <!-- ↓header -->
@@ -49,7 +47,7 @@
             <label for="reserveId">予約番号</label><span id="reserveId">${reserveId}</span>
         </div>
 
-        <table cellspacing="0" class="wFull bdCell  mT10">
+        <table class="wFull bdCell  mT10">
             <tbody>
             <tr>
                 <th class="w170 bgLGray fw_bold">お名前</th>
@@ -78,7 +76,7 @@
         <!-- ↓footer -->
         <div id="reserveFooter">
             <ul id="footerLinks">
-                <li><a href="javascript:void(0);" id="mterms">ID・会員規約</a></li>
+                <li><a href="javascript:void(0);" id="memberTerms">ID・会員規約</a></li>
                 <li><a href="javascript:void(0);" id="terms">利用規約</a></li>
                 <li><a href="javascript:void(0);" id="privacy">プライバシーポリシー</a></li>
                 <li><a href="javascript:void(0);" id="guide">ご利用ガイド</a></li>
