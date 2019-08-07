@@ -16,6 +16,7 @@ import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.common.session.OAuth2Authenticator;
 import jp.com.sskprj.dw.common.session.OAuth2Authorizer;
 import jp.com.sskprj.dw.common.session.UserSessionBean;
+import jp.com.sskprj.dw.three.api.LoginApiResource;
 import jp.com.sskprj.dw.three.config.ThreeConfiguration;
 import jp.com.sskprj.dw.three.config.ViewConfiguration;
 import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
@@ -46,6 +47,7 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
         environment.jersey().register(ReserveResource.class);
         environment.jersey().register(DummyPagesResource.class);
         environment.jersey().register(LoginResource.class);
+        environment.jersey().register(LoginApiResource.class);
         environment.jersey().register(new AbstractBinder() {
             @Override
             protected void configure() {

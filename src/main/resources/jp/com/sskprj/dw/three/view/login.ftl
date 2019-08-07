@@ -21,6 +21,7 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
     <script src="/assets/js/init-firebase.js"></script>
+    <script src="/assets/js/lib/jquery-3.4.1.js"></script>
 
 </head>
 <body>

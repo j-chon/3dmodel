@@ -1,5 +1,5 @@
 // Your web app's Firebase configuration
-var firebaseConfig = {
+let firebaseConfig = {
     apiKey: "AIzaSyB2JvuzjJGXwhGchDFXUBZFlZoK_PmsP30",
     authDomain: "userauthentication01-4554b.firebaseapp.com",
     databaseURL: "https://userauthentication01-4554b.firebaseio.com",
@@ -26,20 +26,39 @@ function toggleSignIn() {
         // [START signin]
         firebase.auth().signInWithPopup(provider).then(function (result) {
             // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
+            let token = result.credential.accessToken;
             // The signed-in user info.
-            var user = result.user;
+            let user = result.user;
             // [START_EXCLUDE]
             document.getElementById('quickstart-oauthtoken').textContent = token;
+
+            let registerUrl = '/loginApi/register/';
+            let requestBody = JSON.stringify({token: token});
+            let requestParam = {
+                method: "post",
+                body: requestBody,
+                headers: new Headers({"Content-type": "application/json"})
+            };
+            // TODO tokenをajaxでサーバー側に送信する。
+            let req = new Request(registerUrl, requestParam);
+            fetch(req).then(response => {
+                console.log(response.status);
+                return response.json();
+            }).then(json => {
+                console.log('json:', json);
+            }).catch(err => {
+                console.log(err)
+            });
+
             // [END_EXCLUDE]
         }).catch(function (error) {
             // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
+            let errorCode = error.code;
+            let errorMessage = error.message;
             // The email of the user's account used.
-            var email = error.email;
+            let email = error.email;
             // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
+            let credential = error.credential;
             // [START_EXCLUDE]
             if (errorCode === 'auth/account-exists-with-different-credential') {
                 alert('You have already signed up with a different auth provider for that email.');
@@ -74,13 +93,13 @@ function initApp() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var isAnonymous = user.isAnonymous;
-            var uid = user.uid;
-            var providerData = user.providerData;
+            let displayName = user.displayName;
+            let email = user.email;
+            let emailVerified = user.emailVerified;
+            let photoURL = user.photoURL;
+            let isAnonymous = user.isAnonymous;
+            let uid = user.uid;
+            let providerData = user.providerData;
             // [START_EXCLUDE]
             document.getElementById('quickstart-sign-in-status').textContent = 'サインイン';
             document.getElementById('quickstart-sign-in').textContent = 'サインアウト';
@@ -100,6 +119,8 @@ function initApp() {
         // [END_EXCLUDE]
     });
     // [END authstatelistener]
+
+    // event listener
     document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
 }
 
