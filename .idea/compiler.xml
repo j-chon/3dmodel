@@ -4,9 +4,5 @@
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="3dmodel.main" target="12" />
-      <module name="3dmodel.test" target="12" />
-    </bytecodeTargetLevel>
   </component>
 </project>
