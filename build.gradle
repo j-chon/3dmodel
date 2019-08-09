@@ -10,7 +10,7 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '5.0.0'
+    id "com.github.johnrengelman.shadow" version "5.1.0"
     id "com.moowork.node" version "1.2.0"
 
 }
@@ -74,17 +74,24 @@ shadowJar {
     exclude 'META-INF/*.DSA'
     exclude 'META-INF/*.RSA'
 }
+wrapper {
+    gradleVersion = '5.4.1'
+}
+
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-task runJar(dependsOn:jar) doLast {
+
+
+task runJar(dependsOn:shadowJar) doLast {
     javaexec {
         main="-jar";
         args = [
-                "/fitnesse-standalone.jar",
-                "-c",
-                "FrontPage?suite&format=text"
+                "./build/libs/3dmodel-1.0-all.jar",
+                "server",
+                "three.yml"
         ]
     }
 }
@@ -94,7 +101,7 @@ jar {
         attributes(
                 'Implementation-Title': applicationName,
                 'Implementation-Version': 0.1,
-                'Built-By': 'samansa',
+                'Built-By': 'Samansa',
                 'Built-Time': 2019/07/01,
                 'Main-Class': applicationName,
                 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
@@ -109,3 +116,4 @@ node {
 }
 
 tasks.withType(AbstractCompile)*.options*.encoding = tasks.withType(GroovyCompile)*.groovyOptions*.encoding = 'UTF-8'
+
