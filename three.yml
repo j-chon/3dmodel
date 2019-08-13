@@ -1,5 +1,6 @@
 template: Hello, %s!
 defaultName: Stranger
+dbAccess: false
 
 server:
   rootPath: /
