@@ -1,6 +1,8 @@
 template: Hello, %s!
 defaultName: Stranger
+fireBaseAuth: true
 dbAccess: false
+
 
 server:
   rootPath: /

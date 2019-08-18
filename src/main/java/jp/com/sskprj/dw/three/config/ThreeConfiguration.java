@@ -30,10 +30,14 @@ public class ThreeConfiguration extends Configuration {
     @Getter
     private DataSourceFactory datasource = new DataSourceFactory();
 
-//    public void setClassLoaderForTemplateLoading(ClassLoader classLoader, String basePackagePath) {
-//        freemarker.template.Configuration fmcg = new freemarker.template.Configuration(
-//                freemarker.template.Configuration.VERSION_2_3_0);
-//        fmcg.setClassLoaderForTemplateLoading(classLoader,basePackagePath);
-//    }
+    @Valid
+    @NotNull
+    @Getter
+    @Setter
+    private boolean fireBaseAuth = false;
 
+    @NotNull
+    @Getter
+    @Setter
+    private boolean dbAccess = false;
 }

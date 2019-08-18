@@ -29,11 +29,20 @@ function toggleSignIn() {
             let token = result.credential.accessToken;
             // The signed-in user info.
             let user = result.user;
+
+            let displayName = user.displayName;
+            let email = user.email;
+            let emailVerified = user.emailVerified;
+            let photoURL = user.photoURL;
+            let isAnonymous = user.isAnonymous;
+            let uid = user.uid;
+            let providerData = user.providerData;
+
             // [START_EXCLUDE]
             document.getElementById('quickstart-oauthtoken').textContent = token;
 
             let registerUrl = '/loginApi/register/';
-            let requestBody = JSON.stringify({token: token});
+            let requestBody = JSON.stringify({token: token, uid: uid});
             let requestParam = {
                 method: "post",
                 body: requestBody,
@@ -46,6 +55,7 @@ function toggleSignIn() {
                 return response.json();
             }).then(json => {
                 console.log('json:', json);
+                document.getElementById('sign-in-status').innerHTML = json.result;
             }).catch(err => {
                 console.log(err)
             });
@@ -77,7 +87,7 @@ function toggleSignIn() {
         // [END signout]
     }
     // [START_EXCLUDE]
-    document.getElementById('quickstart-sign-in').disabled = true;
+    document.getElementById('sign-in').disabled = true;
     // [END_EXCLUDE]
 }
 
@@ -101,27 +111,28 @@ function initApp() {
             let uid = user.uid;
             let providerData = user.providerData;
             // [START_EXCLUDE]
-            document.getElementById('quickstart-sign-in-status').textContent = 'サインイン';
-            document.getElementById('quickstart-sign-in').textContent = 'サインアウト';
+            document.getElementById('sign-in-status').textContent = 'サインイン';
+            document.getElementById('sign-in').textContent = 'サインアウト';
             document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
             // [END_EXCLUDE]
         } else {
             // User is signed out.
             // [START_EXCLUDE]
-            document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-            document.getElementById('quickstart-sign-in').textContent = 'Sign in with Google';
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+            document.getElementById('sign-in').textContent = 'Sign in with Google';
             document.getElementById('quickstart-account-details').textContent = 'null';
             document.getElementById('quickstart-oauthtoken').textContent = 'null';
             // [END_EXCLUDE]
         }
         // [START_EXCLUDE]
-        document.getElementById('quickstart-sign-in').disabled = false;
+        // $('#sign-in').attr('disabled', 'false');
+        document.getElementById('sign-in').disabled = false;
         // [END_EXCLUDE]
     });
     // [END authstatelistener]
 
     // event listener
-    document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+    document.getElementById('sign-in').addEventListener('click', toggleSignIn, false);
 }
 
 window.onload = function () {

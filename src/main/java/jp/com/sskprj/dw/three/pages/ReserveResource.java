@@ -34,6 +34,7 @@ import java.net.URI;
 @NoArgsConstructor
 public class ReserveResource {
 
+    public static final String RESERVE = "reserve";
     @Inject
     private UserSessionPoolService userSessionPoolService;
 
@@ -54,8 +55,9 @@ public class ReserveResource {
     @Path("input")
     public ReserveInputView getInput(@QueryParam("serviceId") String serviceId, @Context HttpServletRequest request) {
 
-        CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve", request);
-        csrfFilter.start();
+        // TODO フィールドにインスタンスを持たせられるはず。試してみる。
+        final CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, RESERVE);
+        csrfFilter.start(request);
         log.info("URL : {}", request.getPathInfo());
 
         ReserveInputView reserveInputView = new ReserveInputView(csrfFilter.getCurrentToken());
@@ -69,8 +71,8 @@ public class ReserveResource {
     @Path("confirm/")
     public ReserveConfirmView postConfirm(@BeanParam ReserveForm form, @Context HttpServletRequest httpServletRequest) {
 
-        CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve", httpServletRequest);
-        csrfFilter.process(form.getToken());
+        final CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve");
+        csrfFilter.process(httpServletRequest,form.getToken());
 
         ReserveConfirmView reserveConfirmView = new ReserveConfirmView();
         reserveConfirmView.setViewHeaderData(new ViewHeaderData());
@@ -123,8 +125,8 @@ public class ReserveResource {
             Response response = Response.seeOther(uri).build();
 
             // CSRFトークンを破棄する。
-            CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve", httpServletRequest);
-            csrfFilter.close();
+            final CsrfMethodFilter csrfFilter = new CsrfMethodFilter(userSessionPoolService, "reserve");
+            csrfFilter.close(httpServletRequest);
 
             log.info("転送準備OK");
             return response;

@@ -2,7 +2,7 @@
 <#-- @ftlvariable name="" type="jp.com.sskprj.dw.three.view.LoginView" -->
 <html lang="ja">
 <head>
-    <meta charset=utf-8/>
+    <meta charset=utf-8 >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${viewHeaderData.title}</title>
 
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+    <script src="/assets/js/lib/jquery-3.4.1.js"></script>
 
     <link rel="stylesheet" href="/assets/css/loginMain.css">
 
@@ -21,7 +22,6 @@
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
     <script src="/assets/js/init-firebase.js"></script>
-    <script src="/assets/js/lib/jquery-3.4.1.js"></script>
 
 </head>
 <body>
@@ -50,13 +50,12 @@
                     <p>Sign in with your Google account below.</p>
 
                     <!-- Button that handles sign-in/sign-out -->
-                    <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in">Sign in
-                        with Google
+                    <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="sign-in">Googleでサインイン
                     </button>
 
                     <!-- Container where we'll display the user details -->
                     <div class="quickstart-user-details-container">
-                        Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+                        Firebase sign-in status: <span id="sign-in-status">不明</span>
                         <div>Firebase auth <code>currentUser</code> object value:</div>
                         <pre><code id="quickstart-account-details">null</code></pre>
                         <div>Google OAuth Access Token:</div>

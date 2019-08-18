@@ -9,12 +9,14 @@ import org.apache.commons.lang3.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.WebApplicationException;
 
+/**
+ * CSRF対策のトークン管理クラス
+ * 開始～維持～破棄のメソッドで呼び出す。
+ */
 @Slf4j
 public class CsrfMethodFilter {
 
     private static final String CSRF_TOKEN_KEY = "csrf_token";
-
-    private HttpServletRequest webRequest;
 
     private UserSessionPoolService userSessionPoolService;
 
@@ -24,20 +26,18 @@ public class CsrfMethodFilter {
     @Getter
     private String currentToken;
 
-    public CsrfMethodFilter(UserSessionPoolService userSessionPoolService, String key,
-            HttpServletRequest httpServletRequest) {
+    public CsrfMethodFilter(UserSessionPoolService userSessionPoolService, String key) {
         this.userSessionPoolService = userSessionPoolService;
         this.key = key;
-        this.webRequest = httpServletRequest;
     }
 
     /**
      * チェックに引っ掛かった場合はエラーを返す
      */
-    public void start() {
-        log.info("リクエスト - {}", webRequest);
+    public void start(HttpServletRequest httpServletRequest) {
+        log.info("リクエスト - {}", httpServletRequest);
         String tokenFullKey = getTokenFullKey();
-        String jsessionid = webRequest.getSession().getId();
+        String jsessionid = httpServletRequest.getSession().getId();
         String tokenFromSession = userSessionPoolService.selectUserSessionInfo(tokenFullKey, jsessionid);
 
         log.info("tokenFromSession - {}", tokenFromSession);
@@ -62,14 +62,24 @@ public class CsrfMethodFilter {
         return CSRF_TOKEN_KEY + "_" + this.key;
     }
 
-    public void close() {
-        String jsessionid = webRequest.getSession().getId();
-        boolean isUpdated = userSessionPoolService.removeSessionInfo(jsessionid, getTokenFullKey());
+    /**
+     * トークンを破棄するメソッドで呼び出す。
+     *
+     * @return
+     */
+    public boolean close(HttpServletRequest httpServletRequest) {
+        String jsessionid = httpServletRequest.getSession().getId();
+        return userSessionPoolService.removeSessionInfo(jsessionid, getTokenFullKey());
     }
 
-    public void process(String formToken) {
+    /**
+     * トークンを維持するメソッドで呼び出す。
+     *
+     * @return
+     */
+    public void process(HttpServletRequest httpServletRequest,String formToken) {
         String tokenFullKey = getTokenFullKey();
-        String jsessionid = webRequest.getSession().getId();
+        String jsessionid = httpServletRequest.getSession().getId();
         log.info("フィルター確認 - {}", jsessionid);
 
         String tokenFromSession = userSessionPoolService.selectUserSessionInfo(tokenFullKey, jsessionid);
