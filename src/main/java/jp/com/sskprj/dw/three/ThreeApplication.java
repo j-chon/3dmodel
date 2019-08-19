@@ -1,11 +1,6 @@
 package jp.com.sskprj.dw.three;
 
-import com.google.api.gax.paging.Page;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.storage.Bucket;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
-import com.google.common.collect.Lists;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import io.dropwizard.Application;
@@ -20,24 +15,19 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 import jp.com.sskprj.dw.common.provider.OriginalProvider;
-import jp.com.sskprj.dw.common.service.OAuthStatusService;
-import jp.com.sskprj.dw.common.service.UniqueIdService;
-import jp.com.sskprj.dw.common.service.UserSessionPoolService;
 import jp.com.sskprj.dw.common.session.OAuth2Authenticator;
 import jp.com.sskprj.dw.common.session.OAuth2Authorizer;
 import jp.com.sskprj.dw.common.session.UserSessionBean;
 import jp.com.sskprj.dw.three.api.LoginApiResource;
-import jp.com.sskprj.dw.three.config.ThreeConfiguration;
-import jp.com.sskprj.dw.three.config.ViewConfiguration;
+import jp.com.sskprj.dw.three.setup.ApplicationDefinitions;
+import jp.com.sskprj.dw.three.setup.ThirdPartySettingUtils;
+import jp.com.sskprj.dw.three.setup.config.ApplicationConfiguration;
+import jp.com.sskprj.dw.three.setup.config.ViewConfiguration;
 import jp.com.sskprj.dw.three.entity.db.OAuthStatus;
 import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
 import jp.com.sskprj.dw.three.pages.DummyPagesResource;
 import jp.com.sskprj.dw.three.pages.LoginResource;
 import jp.com.sskprj.dw.three.pages.ReserveResource;
-import jp.com.sskprj.dw.three.service.FirebaseAuthService;
-import jp.com.sskprj.dw.three.service.InterfaceFirebaseAuthService;
-import jp.com.sskprj.dw.three.service.ReserveService;
-import lombok.Getter;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -46,21 +36,20 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ThreeApplication extends Application<ThreeConfiguration> {
+public class ThreeApplication extends Application<ApplicationConfiguration> {
 
     private static final String ASSETS_CSS = "/assets/css";
     private static final String ASSETS_JS = "/assets/js";
     private static final String ASSETS_IMAGE = "/assets/image";
     private static final String[] CSRF_TARGET_URL_PATTERNS = { "/reserve/*" };
-    public static final String REFRESH_TOKEN_JSON = "C:\\app\\firebase\\refreshToken.json";
-    public static final String DATABASE_URL = "https://userauthentication01-4554b.firebaseio.com/";
+    //    public static final String DATABASE_URL = "https://userauthentication01-4554b.firebaseio.com/";
 
-    private HibernateBundle<ThreeConfiguration> hibernate;
+    private HibernateBundle<ApplicationConfiguration> hibernate;
 
-    private HibernateBundle<ThreeConfiguration> createHibernateBundle() {
-        return new HibernateBundle<ThreeConfiguration>(OAuthStatus.class) {
+    private HibernateBundle<ApplicationConfiguration> createHibernateBundle() {
+        return new HibernateBundle<ApplicationConfiguration>(OAuthStatus.class) {
             @Override
-            public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {
+            public DataSourceFactory getDataSourceFactory(ApplicationConfiguration configuration) {
                 return configuration.getDatasource();
             }
         };
@@ -71,9 +60,11 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     }
 
     @Override
-    public void run(ThreeConfiguration configuration, Environment environment) throws Exception {
+    public void run(ApplicationConfiguration configuration, Environment environment) throws Exception {
 
-        initFirebaseOption();
+        // 外部サービスの設定
+        ThirdPartySettingUtils.initFirebaseOption(configuration);
+
         // リソース登録
         environment.jersey().register(ReserveResource.class);
         environment.jersey().register(DummyPagesResource.class);
@@ -81,7 +72,7 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
         environment.jersey().register(LoginApiResource.class);
 
         // DI設定
-        AbstractBinder diBinder = createDiBinder();
+        AbstractBinder diBinder = ApplicationDefinitions.createDiBinder();
         environment.jersey().register(diBinder);
 
         // view関連
@@ -103,24 +94,6 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
 
     }
 
-    /**
-     * DIの設定
-     *
-     * @return
-     */
-    private AbstractBinder createDiBinder() {
-        return new AbstractBinder() {
-            @Override
-            protected void configure() {
-                bind(UserSessionPoolService.class).to(UserSessionPoolService.class);
-                bind(ReserveService.class).to(ReserveService.class);
-                bind(UniqueIdService.class).to(UniqueIdService.class);
-                bind(OAuthStatusService.class).to(OAuthStatusService.class);
-                bind(FirebaseAuthService.class).to(InterfaceFirebaseAuthService.class);
-            }
-        };
-    }
-
     private void addCsrfEnv(Environment environment) {
         environment.jersey().register(new OriginalProvider());
     }
@@ -139,7 +112,7 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
     }
 
     @Override
-    public void initialize(Bootstrap<ThreeConfiguration> bootstrap) {
+    public void initialize(Bootstrap<ApplicationConfiguration> bootstrap) {
 
         bootstrap.addBundle(new ViewBundle<>());
 
@@ -149,23 +122,11 @@ public class ThreeApplication extends Application<ThreeConfiguration> {
 
         bootstrap.addBundle(new MigrationsBundle<>() {
             @Override
-            public DataSourceFactory getDataSourceFactory(ThreeConfiguration configuration) {
+            public DataSourceFactory getDataSourceFactory(ApplicationConfiguration configuration) {
                 return configuration.getDatasource();
             }
         });
         //        bootstrap.addBundle(hibernate);
     }
-    private void initFirebaseOption() {
-        try {
-            FileInputStream refreshToken = new FileInputStream(REFRESH_TOKEN_JSON);
-            FirebaseOptions options = new FirebaseOptions.Builder().setCredentials(
-                    GoogleCredentials.fromStream(refreshToken)).setDatabaseUrl(DATABASE_URL).build();
-            FirebaseApp.initializeApp(options);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-    }
 }

@@ -1,4 +1,4 @@
-package jp.com.sskprj.dw.three.config;
+package jp.com.sskprj.dw.three.setup.config;
 
 import io.dropwizard.views.ViewRenderException;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package jp.com.sskprj.dw.three.config;
+package jp.com.sskprj.dw.three.setup.config;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class ThreeConfiguration extends Configuration {
+public class ApplicationConfiguration extends Configuration {
 
     @Getter
     @Setter
@@ -34,10 +34,23 @@ public class ThreeConfiguration extends Configuration {
     @NotNull
     @Getter
     @Setter
+    @JsonProperty
     private boolean fireBaseAuth = false;
 
     @NotNull
     @Getter
     @Setter
+    @JsonProperty("dbAccess")
     private boolean dbAccess = false;
+
+    @Getter
+    @Setter
+    @JsonProperty("firebaseTokenPath")
+    private String firebaseTokenPath = null;
+
+    @Getter
+    @Setter
+    @JsonProperty("firebaseDBUrl")
+    private String firebaseDBUrl = null;
+
 }

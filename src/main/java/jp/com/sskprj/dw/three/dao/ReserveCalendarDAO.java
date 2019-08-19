@@ -4,7 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import io.dropwizard.hibernate.AbstractDAO;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.hibernate.UnitOfWork;
-import jp.com.sskprj.dw.three.config.ThreeConfiguration;
+import jp.com.sskprj.dw.three.setup.config.ApplicationConfiguration;
 import jp.com.sskprj.dw.three.entity.db.ReserveSchedule;
 import org.assertj.core.util.Lists;
 
@@ -17,7 +17,7 @@ public class ReserveCalendarDAO extends AbstractDAO<ReserveSchedule> {
      *
      * @param hibernate a session provider
      */
-    public ReserveCalendarDAO(HibernateBundle<ThreeConfiguration> hibernate) {
+    public ReserveCalendarDAO(HibernateBundle<ApplicationConfiguration> hibernate) {
         super(hibernate.getSessionFactory());
     }
 
