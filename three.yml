@@ -3,8 +3,8 @@ defaultName: Stranger
 fireBaseAuth: true
 # db接続可否 {true : 接続あり}
 dbAccess: false
-# Firebaseの管理者ツールを利用する為に必要なトークンファイルのパス
-firebaseTokenPath: "C:\app\firebase\refreshToken.json"
+# Firebaseの管理者ツールを利用する為に必要なトークンファイルのパス(\\はエスケープが必要)
+firebaseTokenPath: "C:\\app\\firebase\\refreshToken.json"
 firebaseDBUrl : "https://userauthentication01-4554b.firebaseio.com/"
 
 server:

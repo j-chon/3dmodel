@@ -28,6 +28,7 @@ import jp.com.sskprj.dw.three.health.TemplateHealthCheck;
 import jp.com.sskprj.dw.three.pages.DummyPagesResource;
 import jp.com.sskprj.dw.three.pages.LoginResource;
 import jp.com.sskprj.dw.three.pages.ReserveResource;
+import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.glassfish.jersey.internal.inject.AbstractBinder;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -36,6 +37,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+@Slf4j
 public class ThreeApplication extends Application<ApplicationConfiguration> {
 
     private static final String ASSETS_CSS = "/assets/css";
@@ -61,6 +63,8 @@ public class ThreeApplication extends Application<ApplicationConfiguration> {
 
     @Override
     public void run(ApplicationConfiguration configuration, Environment environment) throws Exception {
+
+        log.info("***Show Configuration : {}",configuration.toString());
 
         // 外部サービスの設定
         ThirdPartySettingUtils.initFirebaseOption(configuration);
